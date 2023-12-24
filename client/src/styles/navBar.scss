@@ -1,10 +1,11 @@
 .navBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #023047;
   padding: 0 10px;
   height: 85px;
+  color: #ffb703;
 }
 .navBar__left-part {
   display: flex;
