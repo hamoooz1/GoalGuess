@@ -4,7 +4,6 @@
   object-fit: cover;
   margin: 0;
   padding: 0;
-  filter: blur(2.5px);
 }
 .content {
   position: absolute;
@@ -15,8 +14,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  // color: white;
 }
 .homepage__title {
-  color: #023047;
+  overflow: hidden;
+  display: flex;
+  font-size: 10rem;
+  color: #ffb703;
+  // color: transparent;
+  // background-image: linear-gradient(to right, #ffd700, #ffaf00);
+
+  // background-clip: text;
 }

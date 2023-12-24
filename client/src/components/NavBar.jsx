@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/navBar.scss";
 
 import goalGuessLogo from "../goalGuessLogo.png";
+import AnimatedTextWord from "../components/AnimatedTextWord";
 
 function NavBar() {
   return (
@@ -14,12 +15,17 @@ function NavBar() {
         </Link>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <Link to="/">How to play</Link>
+            <Link className="link" to="/">
+              How to play
+            </Link>
           </li>
           <li className="menu__item">
             <Link to="/">Leaderboard</Link>
           </li>
         </ul>
+      </div>
+      <div>
+        <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
         <Link to="/login">Login</Link>
