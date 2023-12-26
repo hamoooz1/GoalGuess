@@ -1,0 +1,19 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  background-color: antiquewhite;
+  padding: 20px;
+}
+
+.login-register-btn {
+  justify-content: center;
+  align-items: center;
+}
+
+.goalGuesslogo {
+  height: 100px;
+  width: 100px;
+  border-radius: 60%;
+}
