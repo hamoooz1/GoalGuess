@@ -1,0 +1,10 @@
+
+DROP TABLE IF EXISTS stats CASCADE;
+
+CREATE TABLE stats (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) NOT NULL,
+  win_count INTEGER DEFAULT 0,
+  lose_count INTEGER DEFAULT 0,
+  total_games INTEGER DEFAULT 0
+);
