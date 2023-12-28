@@ -1,0 +1,34 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #023047;
+  padding: 0 10px;
+  height: 85px;
+}
+.navBar__left-part {
+  display: flex;
+}
+.navBar__right-part {
+  display: flex;
+  gap: 10px;
+}
+.navBar__menu {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+.login-register-btn {
+  justify-content: center;
+  align-items: center;
+}
+
+.goalGuesslogo {
+  height: 60px;
+  width: 60px;
+  border-radius: 60%;
+}
+a {
+  color: #ffb703;
+  text-decoration: none;
+}
