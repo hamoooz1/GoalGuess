@@ -10,6 +10,7 @@ import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 
 function Homepage() {
+  const { isModalOpen, openModal, closeModal } = useApplicationData();
   return (
     <article className="homepage">
       <NavBar />

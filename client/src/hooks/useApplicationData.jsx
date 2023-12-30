@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 
 const initialState = {
   isModalOpen: false
@@ -9,12 +9,43 @@ const appReducer = (state, action) => {
 
     // open modal case can include 'modalType' as a variable if/when multiple modals are introduced, if there is a need to differentiate
     case 'OPEN_MODAL':
-        const { payload } = action;
-        return {
-          ...state,
-          isModalOpen: true,
-          // modalType
-        };
+      return {
+        ...state,
+        isModalOpen: true,
+        // modalType
+      };
+
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        isModalOpen: false,
+        // modalType: null
+      };
+
+    default:
+      return state;
 
   }
 }
+
+
+
+function useApplicationData() {
+  const [state, dispatch] = useReducer(appReducer, initialState);
+
+  const openModal = () => {
+    dispatch({ type: 'OPEN_MODAL' });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: "CLOSE_MODAL" });
+  };
+
+  return { 
+    isModalOpen: state.isModalOpen,
+    openModal,
+    closeModal,
+  };
+};
+
+export default useApplicationData;
