@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "../styles/navBar.scss";
 
-import goalGuessLogo from "../goalGuessLogo.png";
+import goalGuessLogo from "../football.svg";
 
 function NavBar() {
   return (
@@ -14,16 +14,27 @@ function NavBar() {
         </Link>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <Link to="/">How to play</Link>
+            <Link to="#" className="item__link">
+              How to play
+            </Link>
           </li>
           <li className="menu__item">
-            <Link to="/">Leaderboard</Link>
+            <Link to="#" className="item__link">
+              Leaderboard
+            </Link>
           </li>
         </ul>
       </div>
+      <div>
+        <h1 className="navBar__title">GOALGUESS</h1>
+      </div>
       <div className="navBar__right-part">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        <Link to="/login" className="item__link">
+          Login
+        </Link>
+        <Link to="/signUp" className="item__link">
+          Sign up
+        </Link>
       </div>
     </nav>
   );

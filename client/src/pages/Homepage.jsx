@@ -8,6 +8,8 @@ import "../styles/navBar.scss";
 
 import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
+import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
+import Footer from "../components/footer";
 
 function Homepage() {
   return (
@@ -16,8 +18,13 @@ function Homepage() {
 
       <BackgroundVideo />
       <div className="content">
-        <h1 className="homepage__title">WELCOME</h1>
+        <AnimatedTextCharacter
+          className="homepage__title"
+          text="GoalGuess"
+          isInView="true"
+        />
       </div>
+      <Footer />
     </article>
   );
 }
