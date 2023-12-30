@@ -8,6 +8,7 @@ import "../styles/navBar.scss";
 
 import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
+import HowToPlayModal from "../modals/HowToPlayModal";
 
 function Homepage() {
   const { isModalOpen, openModal, closeModal } = useApplicationData();
@@ -19,6 +20,8 @@ function Homepage() {
       <div className="content">
         <h1 className="homepage__title">WELCOME</h1>
       </div>
+
+      {isModalOpen && <HowToPlayModal onClose={closeModal} />}
     </article>
   );
 }
