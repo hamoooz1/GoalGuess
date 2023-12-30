@@ -25,14 +25,15 @@
 }
 
 .goalGuesslogo {
-  height: 60px;
-  width: 60px;
-  border-radius: 60%;
+  height: 45px;
+  width: 45px;
 }
-
-// color: #ffb703;
-
-a {
+.item__link {
+  position: relative;
+  cursor: pointer !important;
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
   background-image: linear-gradient(
     45deg,
     rgba(#023047, 1) 0%,
@@ -44,12 +45,10 @@ a {
   background-size: 300%;
   background-position: left;
   background-clip: text;
-  color: transparent;
   animation: bg-animation 3s infinite alternate;
-  transition: border-bottom 0.3s ease;
-  position: relative;
-  cursor: pointer;
-  letter-spacing: 0.1rem;
+  transition: border-bottom 0.5s ease;
+  display: block;
+  color: transparent;
 
   @keyframes bg-animation {
     0% {
@@ -59,40 +58,25 @@ a {
       background-position: right;
     }
   }
-  &:hover {
-    transform: scale(1.5);
-  }
-  &:after {
+
+  &::after {
     content: "";
     position: absolute;
-    display: block;
     bottom: -3px;
     left: 0;
     width: 0;
     height: 2px; /* Height of the line */
     background-color: #ffb703; /* Color of the line */
-    // transform: scaleX(0); /* Initially, the line is not visible */
-    // // transform-origin: bottom right;
-    // transition: width 0.3s ease;
-    transition: width 0.5s;
-    // border-top-width: 1px;
-    // border-color: #ffb703;
-    // transition: width 0.25s ease-out;
+    transition: width 0.4s ease-out;
   }
 
   &:hover::after {
-    content: "";
     width: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    height: 2px; /* Высота линии */
-    background-color: #ffb703; /* Цвет подчеркивания при появлении линии*/
-    transition: width 0.5s;
   }
 }
+
 .navBar__title {
+  font-size: 1.7rem;
   letter-spacing: 0.5rem;
   margin-left: -150px;
   background-image: linear-gradient(
@@ -108,8 +92,6 @@ a {
   background-clip: text;
   color: transparent;
   animation: bg-animation 3s infinite alternate;
-  // transition: border-bottom 0.3s ease;
-  position: relative;
   cursor: pointer;
 
   @keyframes bg-animation {

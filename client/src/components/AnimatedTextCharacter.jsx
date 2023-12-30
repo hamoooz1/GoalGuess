@@ -41,8 +41,7 @@ const AnimatedTextCharacter = ({ text }) => {
   return (
     <motion.div
       style={{
-        overflow: "hidden",
-        display: "flex",
+        marginTop: "-85px",
         fontSize: "10rem",
         color: "#ffb703",
       }}
