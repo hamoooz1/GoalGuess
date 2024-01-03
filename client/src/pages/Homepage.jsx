@@ -10,18 +10,17 @@ import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import HowToPlayModal from "../modals/HowToPlayModal";
 
-function Homepage() {
-  const { isModalOpen, openModal, closeModal } = useApplicationData();
+function Homepage(props) {
   return (
     <article className="homepage">
-      <NavBar />
+      <NavBar closeModal={props.closeModal} isModalOpen={props.isModalOpen} openModal={props.openModal} />
 
       <BackgroundVideo />
       <div className="content">
         <h1 className="homepage__title">WELCOME</h1>
       </div>
 
-      {isModalOpen && <HowToPlayModal onClose={closeModal} />}
+      {props.isModalOpen && <HowToPlayModal closeModal={props.closeModal} />}
     </article>
   );
 }
