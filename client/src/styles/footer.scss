@@ -1,9 +1,95 @@
+body {
+  margin: 0;
+}
+
 .footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #023047;
-  padding: 0 10px;
-  margin-top: -10px;
-  height: 85px;
+  color: white;
+  width: 100%; 
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+  height: 60vh;
+}
+
+.inner-footer {
+  border: 3px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-button {
+  background-color: #3498db; 
+  color: white; 
+  margin: 15px;
+  height: 40px;
+  width: 120px; 
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.contact-button:hover {
+  background-color: #2980b9;
+}
+
+.contact-info {
+  display: flex;
+  border-top: 2px solid #2980b9;
+  border-bottom: 2px solid #2980b9;
+  margin: 20px;
+  margin-bottom: 5px;
+  width: 90%;
+  padding-bottom: 15px;
+  justify-content: space-around;
+}
+
+.goal-guess-logo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.about-us {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.about-us h4{
+  border-bottom: solid 2px white;
+  padding: 2px;
+}
+
+.about-us ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.follow-us {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+}
+
+.socials-logos {
+  font-size: 28px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bottom-footer {
+  display: flex;
+  width: 85%;
+  padding-top: 1px;
+  justify-content: space-between;
 }
