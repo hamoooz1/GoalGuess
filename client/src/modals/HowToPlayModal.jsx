@@ -1,6 +1,8 @@
 import React from "react";
 import howToPlayCircle from "../howToPlayCircle.svg";
 import howToPlayCircleGreen from "../howToPlayCircleGreen.svg";
+import howToPlayCircleUp from "../howToPlayCircleUp.svg";
+import howToPlayCircleDown from "../howToPlayCircleDown.svg";
 import '../styles/howToPlay.scss';
 import closeSymbol from "../closeSymbol.svg";
 
@@ -27,10 +29,11 @@ const HowToPlayModal = ({ closeModal, isModalOpen }) => {
               <img className="circle two" src={howToPlayCircleGreen} />
               <img className="circle three" src={howToPlayCircle} />
               <img className="circle four" src={howToPlayCircleGreen} />
-              <img className="circle five" src={howToPlayCircle} />
-              <img className="circle six" src={howToPlayCircle} />
+              <img className="circle five" src={howToPlayCircleUp} />
+              <img className="circle six" src={howToPlayCircleDown} />
             </div>
             <li>The first four items will turn green if you've correctly guessed the player's Nationality, League, Team, or Position</li>
+            <li>The last two indicate whether the player's age and number are higher or lower</li>
           </ul>
         </div>
       </div>

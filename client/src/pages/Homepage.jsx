@@ -15,9 +15,9 @@ function Homepage({ openModal, closeModal, isModalOpen }) {
       <NavBar closeModal={closeModal} isModalOpen={isModalOpen} openModal={openModal} />
 
       <BackgroundVideo />
-      <div className="content">
+      {/* <div className="content">
         <h1 className="homepage__title">WELCOME</h1>
-      </div>
+      </div> */}
     </article>
   );
 }
