@@ -1,24 +1,25 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import React from 'react';
 import "./App.scss";
 import NavBar from "./components/NavBar";
 import Homepage from "./pages/Homepage";
 import useApplicationData from "./hooks/useApplicationData";
 import HowToPlayModal from "./modals/HowToPlayModal";
+import ModalBackdrop from "./components/ModalBackdrop";
 
 function App() {
-  const appData = useApplicationData();
+  const {
+    openModal,
+    closeModal,
+    isModalOpen
+  } = useApplicationData();
+
   return (
-    
-      <Router>
-        <div className="App">
-        <Routes>
-          <Route path="/" element={<Homepage {...appData} />} />
-          <Route path="/howtoplay" element={<HowToPlayModal {...appData} />} />
-        </Routes>
-        </div>
-      </Router>
-    
+    <div className="App">
+      <Homepage openModal={openModal} isModalOpen={isModalOpen} closeModal={closeModal} />
+      {isModalOpen && <ModalBackdrop onClick={closeModal} />}
+      {isModalOpen && <HowToPlayModal closeModal={closeModal} />}
+    </div>
+
   );
 }
 

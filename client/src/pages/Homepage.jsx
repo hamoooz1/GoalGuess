@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
 
@@ -10,17 +9,15 @@ import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import HowToPlayModal from "../modals/HowToPlayModal";
 
-function Homepage(props) {
+function Homepage({ openModal, closeModal, isModalOpen }) {
   return (
     <article className="homepage">
-      <NavBar closeModal={props.closeModal} isModalOpen={props.isModalOpen} openModal={props.openModal} />
+      <NavBar closeModal={closeModal} isModalOpen={isModalOpen} openModal={openModal} />
 
       <BackgroundVideo />
       <div className="content">
         <h1 className="homepage__title">WELCOME</h1>
       </div>
-
-      {props.isModalOpen && <HowToPlayModal closeModal={props.closeModal} />}
     </article>
   );
 }

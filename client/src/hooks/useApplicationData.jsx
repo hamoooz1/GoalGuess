@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useReducer } from "react";
+import { initialState, reducer, actionTypes } from "./reducer";
 
 function useApplicationData() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const openModal = () => {
-    setIsModalOpen(true);
+    dispatch({ type: actionTypes.OPEN_MODAL });
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    dispatch({ type: actionTypes.CLOSE_MODAL });
   };
 
-  return { 
-    isModalOpen,
+  return {
+    isModalOpen: state.isModalOpen,
     openModal,
     closeModal,
   };

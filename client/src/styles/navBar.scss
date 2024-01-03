@@ -9,14 +9,15 @@
 .navBar__left-part {
   display: flex;
 }
+
 .navBar__right-part {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .navBar__menu {
   display: flex;
   list-style: none;
-  gap: 10px;
+  gap: 20px;
 }
 .login-register-btn {
   justify-content: center;
@@ -24,11 +25,81 @@
 }
 
 .goalGuesslogo {
-  height: 60px;
-  width: 60px;
-  border-radius: 60%;
+  height: 45px;
+  width: 45px;
 }
-a {
-  color: #ffb703;
+.item__link {
+  position: relative;
+  cursor: pointer !important;
   text-decoration: none;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  background-image: linear-gradient(
+    45deg,
+    rgba(#023047, 1) 0%,
+    rgba(#219ebc, 1) 54%,
+    rgba(#ffb703, 1) 77%,
+    rgba(#fb8500, 1) 100%
+  );
+
+  background-size: 300%;
+  background-position: left;
+  background-clip: text;
+  animation: bg-animation 3s infinite alternate;
+  transition: border-bottom 0.5s ease;
+  display: block;
+  color: transparent;
+
+  @keyframes bg-animation {
+    0% {
+      background-position: left;
+    }
+    100% {
+      background-position: right;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px; /* Height of the line */
+    background-color: #ffb703; /* Color of the line */
+    transition: width 0.4s ease-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.navBar__title {
+  font-size: 1.7rem;
+  letter-spacing: 0.5rem;
+  margin-left: -150px;
+  background-image: linear-gradient(
+    45deg,
+    rgba(#ffffff, 1) 0%,
+    rgba(#f9c74f, 1) 54%,
+    rgba(#ffb703, 1) 77%,
+    rgba(#fb8500, 1) 100%
+  );
+
+  background-size: 300%;
+  background-position: left;
+  background-clip: text;
+  color: transparent;
+  animation: bg-animation 3s infinite alternate;
+  cursor: pointer;
+
+  @keyframes bg-animation {
+    0% {
+      background-position: left;
+    }
+    100% {
+      background-position: right;
+    }
+  }
 }
