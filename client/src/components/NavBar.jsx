@@ -5,7 +5,9 @@ import "../styles/navBar.scss";
 
 import goalGuessLogo from "../football.svg";
 
-function NavBar() {
+function NavBar({ state, handleLogout }) {
+  console.log(state);
+
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
@@ -29,12 +31,28 @@ function NavBar() {
         <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        <Link to="/login" className="item__link">
+        {state.name && (
+          <>
+            <span>Logged in as {state.name}</span>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        )}
+        {!state.name && (
+          <>
+            <Link to="/login" className="item__link">
+              Login
+            </Link>
+            <Link to="/signup" className="item__link">
+              Signup
+            </Link>
+          </>
+        )}
+        {/* <Link to="/login" className="item__link">
           Login
         </Link>
         <Link to="/signUp" className="item__link">
           Sign up
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );
