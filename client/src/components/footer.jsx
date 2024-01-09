@@ -47,7 +47,6 @@ If you have any suggestions, bug reports, or general feedback to enhance your ex
           <h5>@2024 GoalGuess Ltd. All rights reserved</h5>
           <h5>Privacy Policy</h5>
         </div>
-          {/* <a href="https://github.com/hamoooz1/GoalGuess">GITHUB</a> */}
       </div>
     </div>
   );
