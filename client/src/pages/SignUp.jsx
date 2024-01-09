@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import axios from "axios";
 
@@ -24,6 +24,8 @@ function SignUp({
 }) {
   const { name, email, password, error } = state;
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -42,7 +44,7 @@ function SignUp({
       setError("Password should be at least 5 characters");
       return;
     }
-    handleSignUp(name, email, password);
+    handleSignUp().then(() => navigate("/"));
   };
 
   return (

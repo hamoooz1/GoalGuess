@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../styles/navBar.scss";
 
-import goalGuessLogo from "../football.svg";
+import goalGuessLogo from "../football_b.svg";
 
 function NavBar({ state, handleLogout }) {
-  console.log(state);
-
+  const navigate = useNavigate();
+  const handleClick = () => {
+    console.log("button pressed");
+    handleLogout().then(() => navigate("/"));
+  };
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
@@ -31,13 +34,15 @@ function NavBar({ state, handleLogout }) {
         <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        {state.name && (
+        {state.isLoggedIn && (
           <>
-            <span>Logged in as {state.name}</span>
-            <button onClick={handleLogout}>Logout</button>
+            <span className="navBar__logged">Logged in as {state.email}</span>
+            <button className="btn" onClick={handleClick}>
+              Logout
+            </button>
           </>
         )}
-        {!state.name && (
+        {!state.isLoggedIn && (
           <>
             <Link to="/login" className="item__link">
               Login
@@ -47,12 +52,6 @@ function NavBar({ state, handleLogout }) {
             </Link>
           </>
         )}
-        {/* <Link to="/login" className="item__link">
-          Login
-        </Link>
-        <Link to="/signUp" className="item__link">
-          Sign up
-        </Link> */}
       </div>
     </nav>
   );

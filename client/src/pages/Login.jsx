@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import axios from "axios";
 
@@ -15,7 +15,6 @@ import "../styles/buttons.scss";
 
 function Login({
   state,
-  setName,
   setEmail,
   setPassword,
   setError,
@@ -23,6 +22,8 @@ function Login({
   handleLogout,
 }) {
   const { email, password, error } = state;
+
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,12 +43,9 @@ function Login({
       setError("Password should be at least 5 characters");
       return;
     }
-    handleLogin(email, password);
+
+    handleLogin().then(() => navigate("/"));
   };
-  //   // reset the form fields to ''
-  //   setEmail("");
-  //   setPassword("");
-  // };
 
   return (
     <div className="login">

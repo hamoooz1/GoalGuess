@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+
 import axios from "axios";
 
 export const ACTIONS = {
@@ -6,6 +7,7 @@ export const ACTIONS = {
   SET_PASSWORD: "SET_PASSWORD",
   SET_EMAIL: "SET_EMAIL",
   SET_ERROR: "SET_ERROR",
+  SET_IS_LOGGED_IN: "SET_IS_LOGGED_IN",
 };
 
 const reducer = (state, action) => {
@@ -18,6 +20,8 @@ const reducer = (state, action) => {
       return { ...state, password: action.payload };
     case ACTIONS.SET_ERROR:
       return { ...state, error: action.payload };
+    case ACTIONS.SET_IS_LOGGED_IN:
+      return { ...state, isLoggedIn: action.payload };
     default:
       return state;
   }
@@ -29,9 +33,12 @@ export const useApplicationData = () => {
     email: "",
     password: "",
     error: "",
+    isLoggedIn: false, // Initialize isLoggedIn as false
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // const navigate = useNavigate();
 
   const setName = (name) => {
     dispatch({ type: ACTIONS.SET_NAME, payload: name });
@@ -50,14 +57,15 @@ export const useApplicationData = () => {
   };
 
   const handleSignUp = () => {
-    axios
+    return axios
       .post("/users/signUp", {
         name: state.name,
         email: state.email,
         password: state.password,
       })
       .then((res) => {
-        window.location.href = "/";
+        dispatch({ type: ACTIONS.SET_IS_LOGGED_IN, payload: true });
+        return res.data;
       })
       .catch((error) => {
         dispatch({
@@ -68,15 +76,17 @@ export const useApplicationData = () => {
   };
 
   const handleLogin = () => {
-    axios
+    return axios
       .post("/users/login", {
         email: state.email,
         password: state.password,
       })
       .then((res) => {
-        window.location.href = "/";
+        dispatch({ type: ACTIONS.SET_IS_LOGGED_IN, payload: true });
+        return res.data;
       })
       .catch((error) => {
+        console.error("Error occurred during login:", error);
         dispatch({
           type: ACTIONS.SET_ERROR,
           payload: error.response.data.error,
@@ -85,10 +95,13 @@ export const useApplicationData = () => {
   };
 
   const handleLogout = () => {
-    axios
+    return axios
       .post("/users/logout")
       .then((res) => {
-        window.location.href = "/";
+        console.log(res.data);
+        dispatch({ type: ACTIONS.SET_EMAIL, payload: "" });
+        dispatch({ type: ACTIONS.SET_IS_LOGGED_IN, payload: false });
+        return res.data;
       })
       .catch((error) => {
         dispatch({

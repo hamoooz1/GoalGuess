@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
@@ -11,7 +11,7 @@ import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
 import Footer from "../components/footer";
 
-function Homepage({ state, handleLogout }) {
+function Homepage({ state, handleLogout, setEmail }) {
   return (
     <article className="homepage">
       <NavBar state={state} handleLogout={handleLogout} />
