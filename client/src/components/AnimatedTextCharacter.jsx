@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import "../styles/homepage.scss";
+import { Link } from "react-router-dom";
 
 const AnimatedTextCharacter = ({ text }) => {
   const letters = Array.from(text);
@@ -39,6 +40,7 @@ const AnimatedTextCharacter = ({ text }) => {
   };
 
   return (
+    <>
     <motion.div
       style={{
         marginTop: "-85px",
@@ -49,16 +51,26 @@ const AnimatedTextCharacter = ({ text }) => {
       initial="hidden"
       animate="visible"
       // whileHover={{
-      //   textShadow: "20px 20px 14px rgba(255, 183, 3, 0.3)",
-      //   transition: { duration: 0.02 },
-      // }}
-    >
+        //   textShadow: "20px 20px 14px rgba(255, 183, 3, 0.3)",
+        //   transition: { duration: 0.02 },
+        // }}
+        >
       {letters.map((letter, index) => (
         <motion.span variants={child} key={index}>
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}
     </motion.div>
+
+    <Link to="/play" className="item__link">
+      <button className="contact-button" style={{
+        fontSize: '1.7rem',
+        marginLeft: '-15px',
+        backgroundColor: '#023047',
+     }}>
+     PLAY </button>
+    </Link>
+  </>
   );
 };
 

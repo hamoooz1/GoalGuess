@@ -9,7 +9,7 @@ import "../styles/navBar.scss";
 import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 function Homepage() {
   return (
