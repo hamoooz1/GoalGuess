@@ -100,6 +100,7 @@ export const useApplicationData = () => {
       .then((res) => {
         console.log(res.data);
         dispatch({ type: ACTIONS.SET_EMAIL, payload: "" });
+        dispatch({ type: ACTIONS.SET_PASSWORD, payload: "" });
         dispatch({ type: ACTIONS.SET_IS_LOGGED_IN, payload: false });
         return res.data;
       })

@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
 import "../styles/homepage.scss";
-import "../styles/navBar.scss";
 
-import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
 import Footer from "../components/footer";
 
-function Homepage({ state, handleLogout, setEmail }) {
+function Homepage({ state, handleLogout }) {
   return (
     <article className="homepage">
       <NavBar state={state} handleLogout={handleLogout} />

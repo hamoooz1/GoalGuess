@@ -52,12 +52,7 @@ function Login({
       <NavBar state={state} handleLogout={handleLogout} />
       <h3 className="login__title">Login</h3>
 
-      <form
-        className="form"
-        // action="/login"
-        // method="POST"
-        onSubmit={handleSubmit}
-      >
+      <form className="form" onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
         <label className="form__label" htmlFor="email">
           Email address

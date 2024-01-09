@@ -8,9 +8,10 @@ import goalGuessLogo from "../football_b.svg";
 function NavBar({ state, handleLogout }) {
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log("button pressed");
+    console.log("button");
     handleLogout().then(() => navigate("/"));
   };
+
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
