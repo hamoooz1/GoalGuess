@@ -6,7 +6,7 @@ import Homepage from "./pages/Homepage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Footer from "./components/NavBar";
-import AuthProvider from "./providers/RegistrationProvider";
+import AuthProvider from "./providers/AuthProvider";
 import { useApplicationData } from "./hooks/useApplicationData";
 
 function App() {
