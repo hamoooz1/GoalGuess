@@ -5,12 +5,12 @@ import "../styles/navBar.scss";
 
 import goalGuessLogo from "../football_b.svg";
 
-function NavBar({ state, handleLogout }) {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    console.log("button");
-    handleLogout().then(() => navigate("/"));
-  };
+function NavBar({ user, handleLogout }) {
+  // const navigate = useNavigate();
+  // const handleClick = () => {
+  //   console.log("button");
+  //   handleLogout().then(() => navigate("/"));
+  // };
 
   return (
     <nav className="navBar">
@@ -35,15 +35,15 @@ function NavBar({ state, handleLogout }) {
         <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        {state.isLoggedIn && (
+        {user && (
           <>
-            <span className="navBar__logged">Logged in as {state.email}</span>
-            <button className="btn" onClick={handleClick}>
+            <span className="navBar__logged">Logged in as {user.email}</span>
+            <button className="btn" onClick={handleLogout}>
               Logout
             </button>
           </>
         )}
-        {!state.isLoggedIn && (
+        {!user && (
           <>
             <Link to="/login" className="item__link">
               Login

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import axios from "axios";
 
@@ -13,47 +14,36 @@ import "../styles/form.scss";
 import "../styles/error.scss";
 import "../styles/buttons.scss";
 
-function Login({
-  state,
-  setEmail,
-  setPassword,
-  setError,
-  handleLogin,
-  handleLogout,
-}) {
-  const { email, password, error } = state;
-
-  const navigate = useNavigate();
-
+function Login({ user, handleLogin, setError }) {
+  <NavBar />;
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!email || !password) {
-      setError("Please fill in all fields");
-      return;
-    }
+    // if (!email || !password) {
+    //   setError("Please fill in all fields");
+    //   return;
+    // }
 
-    const emailPattern = /\S+@\S+\.\S+/;
-    if (!emailPattern.test(email)) {
-      setError("Please enter a valid email address");
-      return;
-    }
+    // const emailPattern = /\S+@\S+\.\S+/;
+    // if (!emailPattern.test(email)) {
+    //   setError("Please enter a valid email address");
+    //   return;
+    // }
 
-    if (password.length < 5) {
-      setError("Password should be at least 5 characters");
-      return;
-    }
-
-    handleLogin().then(() => navigate("/"));
+    // if (password.length < 5) {
+    //   setError("Password should be at least 5 characters");
+    //   return;
+    // }
+    handleLogin(user.email, user.password);
+    // handleLogin().then(() => navigate("/"));
   };
 
   return (
     <div className="login">
-      <NavBar state={state} handleLogout={handleLogout} />
       <h3 className="login__title">Login</h3>
 
       <form className="form" onSubmit={handleSubmit}>
-        {error && <p className="error">{error}</p>}
+        {/* {error && <p className="error">{error}</p>} */}
         <label className="form__label" htmlFor="email">
           Email address
         </label>
@@ -62,8 +52,7 @@ function Login({
           type="email"
           name="email"
           placeholder="Email"
-          value={email}
-          // onChange={handleEmailChange}
+          // value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label className="form__label" htmlFor="password">
@@ -74,8 +63,7 @@ function Login({
           type="password"
           name="password"
           placeholder="Password"
-          value={password}
-          // onChange={handlePasswordChange}
+          // value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit" className="btn">
@@ -85,42 +73,8 @@ function Login({
           Don't have an account? Sign Up
         </Link>
       </form>
-      <Footer />
     </div>
   );
 }
 
 export default Login;
-// const [email, setEmail, handleEmailChange] = useForm("");
-// const [password, setPassword, handlePasswordChange] = useForm("");
-// const [error, setError] = useState("");
-// // const history = useHistory();
-
-// const handleSubmit = (event) => {
-//   event.preventDefault();
-
-//   if (!email || !password) {
-//     setError("Please fill in all fields");
-//     return;
-//   }
-
-//   const emailPattern = /\S+@\S+\.\S+/;
-//   if (!emailPattern.test(email)) {
-//     setError("Please enter a valid email address");
-//     return;
-//   }
-
-//   if (password.length < 5) {
-//     setError("Password should be at least 5 characters");
-//     return;
-//   }
-//   axios
-//     .post("/users/login", { email, password })
-//     .then((res) => {
-//       window.location.href = "/";
-//     })
-//     .catch((error) => {
-//       setError(error.response.data.error);
-//     });
-
-// };

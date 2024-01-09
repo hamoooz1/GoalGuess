@@ -12,8 +12,7 @@ import Footer from "../components/footer";
 function Homepage({ state, handleLogout }) {
   return (
     <article className="homepage">
-      <NavBar state={state} handleLogout={handleLogout} />
-
+      <NavBar />
       <BackgroundVideo />
       <div className="content">
         <AnimatedTextCharacter
@@ -22,7 +21,6 @@ function Homepage({ state, handleLogout }) {
           isInView="true"
         />
       </div>
-      <Footer />
     </article>
   );
 }
