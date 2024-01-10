@@ -10,13 +10,13 @@ export const useAuth = function () {
 
 const AuthProvider = function (props) {
   const [user, setUser] = useState(null);
-  // const [error, setError] = useState(null);
+  // const [reqError, setReqError] = useState(null);
 
   const login = function (email, password) {
     // setUser({ email: "a@a.gmail.com", name: "Alice" });
     // return;
     return axios.post("/users/login", { email, password }).then((res) => {
-      setUser(res.data);
+      setUser(res.data.user);
     });
   };
   const logout = () => {
@@ -27,16 +27,20 @@ const AuthProvider = function (props) {
     // });
   };
 
-  const createUser = function (name, email, password) {
-    axios.post("/users/sigUp", { name, email, password }).then((res) => {
-      setUser(res.data);
-    });
+  const signup = function (name, email, password) {
+    return axios
+      .post("/users/signUp", { name, email, password })
+      .then((res) => {
+        setUser(res.data.user);
+      });
+    // .catch((error) => {
+    //   setReqError(error.response.data.error);
+    // });
   };
-
   const value = {
     user,
     login,
-    createUser,
+    signup,
     logout,
   };
   return (

@@ -5,11 +5,12 @@ import "../styles/navBar.scss";
 import goalGuessLogo from "../football_b.svg";
 
 function NavBar(props) {
+  console.log('user', props.user);
 
-  function logout() {
-    props.logout();
-    props.done();
-  }
+  // function logout() {
+  //   props.logout();
+  //   props.done();
+  // }
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
@@ -45,10 +46,10 @@ function NavBar(props) {
         )}
         {!props.user && (
           <>
-            <span onClick={props.login} className="item__link">
+            <span onClick={props.handleLoginClick} className="item__link">
               Login
             </span>
-            <span onClick={props.signup} className="item__link">
+            <span onClick={props.handleSignupClick} className="item__link">
               Signup
             </span>
           </>

@@ -1,14 +1,12 @@
 import "./App.scss";
-import NavBar from "./components/NavBar";
-import Homepage from "./pages/Homepage";
-
+import HomeRoute from "./route/HomeRoute";
 import AuthProvider from "./providers/AuthProvider";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <Homepage />
+        <HomeRoute />
       </AuthProvider>
     </div>
   );

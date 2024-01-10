@@ -8,7 +8,7 @@ import "../styles/error.scss";
 import "../styles/buttons.scss";
 
 function Signup(props) {
-  const {createUser} = useAuth();
+  const {signup} = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -36,15 +36,17 @@ function Signup(props) {
       return;
     }
 
-    createUser(name, email, password)
-      .then(() => props.done());
-  };
+    signup(name, email, password)
+      .then(() => props.done())
+      .catch((error) => setError(error.response.data.error || 'Signup failed'));;
 
+  };
   return (
     <div className="signUp">
       <h3 className="signUp__title">Sign up</h3>
       <form className="form" onSubmit={handleSubmit}>
-        {/* {error && <p className="error">{error}</p>} */}
+        {error && <p className="error">{error}</p>}
+
         <label className="form__label" htmlFor="name">
           Full name
         </label>
@@ -87,7 +89,7 @@ function Signup(props) {
       </form>
     </div>
   );
-}
+};
 
 export default Signup;
 
