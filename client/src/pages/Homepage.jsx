@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import NavBar from "../components/NavBar";
 import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-
+// import Footer from "../components/Footer";
 
 import Login from "./Login";
 import Signup from "./Signup";
@@ -12,10 +12,6 @@ import "../styles/homepage.scss";
 
 import {useAuth} from "../providers/AuthProvider";
 
-
-import BackgroundVideo from "../components/BackgroundVideo";
-import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-import Footer from "../components/Footer";
 
 
 function Homepage() {
@@ -50,8 +46,8 @@ function Homepage() {
         handleSignupClick={handleSignupClick}
       />
 
-      {page == "login" && <Login done={() => setPage('home')} />}
-      {page == "signup" && <Signup done={() => setPage('home')} />}
+      {page == "login" && <Login done={() => setPage('home')} handleSignupClick={handleSignupClick} />}
+      {page == "signup" && <Signup done={() => setPage('home')} handleLoginClick={handleLoginClick} />}
 
       {page == 'home' &&
         <>
@@ -65,7 +61,7 @@ function Homepage() {
           </div>
         </>
       }
-      <Footer />
+      {/* <Footer /> */}
     </article>
   );
 }
