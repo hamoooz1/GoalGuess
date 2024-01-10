@@ -45,8 +45,8 @@ function Homepage() {
         handleSignupClick={handleSignupClick}
       />
 
-      {page == "login" && <Login done={() => setPage('home')} />}
-      {page == "signup" && <Signup done={() => setPage('home')} />}
+      {page == "login" && <Login done={() => setPage('home')} handleSignupClick={handleSignupClick} />}
+      {page == "signup" && <Signup done={() => setPage('home')} handleLoginClick={handleLoginClick} />}
 
       {page == 'home' &&
         <>

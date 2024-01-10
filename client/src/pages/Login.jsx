@@ -69,7 +69,7 @@ function Login(props) {
         <button type="submit" className="btn">
           Login
         </button>
-        <a className="item__link">Don't have an account? Sign Up</a>
+        <a onClick={props.handleSignupClick} className="item__link">Don't have an account? Sign Up</a>
       </form>
     </div>
   );

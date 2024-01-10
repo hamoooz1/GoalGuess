@@ -1,8 +1,13 @@
 import React, {useEffect, useState, useRef} from "react";
 import {motion, useAnimation, useInView} from "framer-motion";
 import "../styles/homepage.scss";
+<<<<<<< HEAD
+
+
+=======
 import {Link} from "react-router-dom";
 
+>>>>>>> 6d14b030cced44aea3aaf28b6c2ee2172df0dcac
 const AnimatedTextCharacter = ({text}) => {
   const letters = Array.from(text);
   const controls = useAnimation();
