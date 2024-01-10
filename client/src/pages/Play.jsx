@@ -10,7 +10,6 @@ function Play () {
 
   return (
     <>
-    <NavBar />
     <div className="playing-layout">
       <h1>Goal Guess</h1>
       <h2>Premier Soccer Player Guessing Game</h2>
