@@ -10,6 +10,8 @@ import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
 import Footer from "../components/Footer";
+import PlayerStats from "../components/PlayerStats";
+import StatsCentreNav from "../components/StatsCentreNav";
 
 function Homepage() {
   return (
@@ -24,6 +26,8 @@ function Homepage() {
           isInView="true"
         />
       </div>
+      <StatsCentreNav />
+      <PlayerStats />
       <Footer />
     </article>
   );

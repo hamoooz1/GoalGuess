@@ -1,0 +1,27 @@
+.stats-centre {
+  --s: 250px;
+  
+  --_g: #4ccf3a7c 90deg,#5aa5b9 0;
+  background:
+    conic-gradient(from 116.56deg at calc(100%/3) 0   ,var(--_g)),
+    conic-gradient(from -63.44deg at calc(200%/3) 100%,var(--_g))
+    #2FB8AC;
+  background-size: var(--s) var(--s);
+
+  height: 150px; 
+
+  display: flex;
+  align-items:center; 
+
+  .stats-content {
+    padding: 20px;
+    text-align: center;
+
+    h2 {
+      color: #333333;
+      font-size: 52px;
+      font-weight: 1000;
+      margin-left: 3em;
+    }
+  }
+}
