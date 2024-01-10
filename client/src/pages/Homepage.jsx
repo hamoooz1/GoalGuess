@@ -3,15 +3,17 @@ import React, {useState} from "react";
 import NavBar from "../components/NavBar";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
 import BackgroundVideo from "../components/BackgroundVideo";
-// import Footer from "../components/Footer";
 
 import Login from "./Login";
 import Signup from "./Signup";
 
 import "../styles/homepage.scss";
 
-import {useAuth} from "../providers/AuthProvider";
+import Footer from "../components/Footer";
+import PlayerStats from "../components/PlayerStats";
+import StatsCentreNav from "../components/StatsCentreNav";
 
+import {useAuth} from "../providers/AuthProvider";
 
 function Homepage() {
   const {user, logout} = useAuth();
@@ -58,9 +60,11 @@ function Homepage() {
               isInView="true"
             />
           </div>
+      <StatsCentreNav />
+      <PlayerStats />
+      <Footer />
         </>
       }
-      {/* <Footer /> */}
     </article>
   );
 }
