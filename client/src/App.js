@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import NavBar from "./components/NavBar";
 import Homepage from "./pages/Homepage";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -14,14 +13,7 @@ function App() {
     openModal,
     closeModal,
     isModalOpen,
-    modalType,
-    setName,
-    setEmail,
-    setPassword,
-    setError,
-    handleSignUp,
-    handleLogin,
-    handleLogout
+    modalType
   } = useApplicationData();
 
   return (
@@ -36,31 +28,19 @@ function App() {
                 isModalOpen={isModalOpen}
                 closeModal={closeModal}
                 modalType={modalType}
-                handleLogout={handleLogout} 
               />
              }
           />
           <Route
             path="/login"
             element={
-              <Login
-                setEmail={setEmail}
-                setPassword={setPassword}
-                setError={setError}
-                handleLogin={handleLogin}
-              />
+              <Login/>
             }
           />
           <Route
             path="/signUp"
             element={
-              <SignUp
-                setName={setName}
-                setEmail={setEmail}
-                setPassword={setPassword}
-                setError={setError}
-                handleSignUp={handleSignUp}
-              />
+              <SignUp/>
             }
           />
         </Routes>
