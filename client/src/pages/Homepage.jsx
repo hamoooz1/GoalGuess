@@ -1,28 +1,18 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-
+import React from "react";
 import NavBar from "../components/NavBar";
-
 import "../styles/homepage.scss";
-
 import BackgroundVideo from "../components/BackgroundVideo";
-import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-import Footer from "../components/footer";
+import HowToPlayModal from "../modals/HowToPlayModal";
 
-function Homepage({ state, handleLogout }) {
+function Homepage({ openModal, closeModal, isModalOpen, modalType }) {
   return (
     <article className="homepage">
-      <NavBar state={state} handleLogout={handleLogout} />
+      <NavBar closeModal={closeModal} isModalOpen={isModalOpen} openModal={openModal} />
 
       <BackgroundVideo />
-      <div className="content">
-        <AnimatedTextCharacter
-          className="homepage__title"
-          text="GoalGuess"
-          isInView="true"
-        />
-      </div>
-      <Footer />
+      {/* <div className="content">
+        <h1 className="homepage__title">WELCOME</h1>
+      </div> */}
     </article>
   );
 }

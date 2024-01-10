@@ -1,33 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import "../styles/navBar.scss";
-
 import goalGuessLogo from "../football_b.svg";
 
-function NavBar({ state, handleLogout }) {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    console.log("button");
-    handleLogout().then(() => navigate("/"));
+function NavBar({ openModal, handleLogout }) {
+  const openHowToPlayModal = () => {
+    openModal("howToPlay");
   };
+  const navigate = useNavigate();
 
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
-        <Link to="/">
-          <img src={goalGuessLogo} className="goalGuesslogo" />
-        </Link>
+        <a href="/">
+          <img src="client/public/goalGuessLogo.png" className="goalGuesslogo" alt="Goal Guess Logo" />
+        </a>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <Link to="#" className="item__link">
+            <a href="#" className="item__link" onClick={openHowToPlayModal}>
               How to play
-            </Link>
+            </a>
           </li>
           <li className="menu__item">
-            <Link to="#" className="item__link">
+            <a href="#" className="item__link">
               Leaderboard
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
@@ -35,24 +32,12 @@ function NavBar({ state, handleLogout }) {
         <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        {state.isLoggedIn && (
-          <>
-            <span className="navBar__logged">Logged in as {state.email}</span>
-            <button className="btn" onClick={handleClick}>
-              Logout
-            </button>
-          </>
-        )}
-        {!state.isLoggedIn && (
-          <>
-            <Link to="/login" className="item__link">
-              Login
-            </Link>
-            <Link to="/signup" className="item__link">
-              Signup
-            </Link>
-          </>
-        )}
+        <a href="/login" className="item__link">
+          Login
+        </a>
+        <a href="/signUp" className="item__link">
+          Sign up
+        </a>
       </div>
     </nav>
   );
