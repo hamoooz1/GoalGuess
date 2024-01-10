@@ -12,6 +12,12 @@ import "../styles/homepage.scss";
 
 import {useAuth} from "../providers/AuthProvider";
 
+
+import BackgroundVideo from "../components/BackgroundVideo";
+import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
+import Footer from "../components/Footer";
+
+
 function Homepage() {
   const {user, logout} = useAuth();
 
@@ -59,6 +65,7 @@ function Homepage() {
           </div>
         </>
       }
+      <Footer />
     </article>
   );
 }
