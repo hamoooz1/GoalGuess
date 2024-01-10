@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from "react";
 import {motion, useAnimation, useInView} from "framer-motion";
 import "../styles/homepage.scss";
-import {Link} from "react-router-dom";
+
 
 const AnimatedTextCharacter = ({text}) => {
   const letters = Array.from(text);
