@@ -1,44 +1,8 @@
-.how-to-play-modal {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  max-width: 600px;
-  max-height: 100%;
-  width: 80%;
-  padding: 20px;
-  background-color: #023047;
-  border: 1px solid;
-  border-radius: 8px;
-
-  z-index: 101;
-
-  .modal-content {
-
-    display: flex;
-    flex-flow: column wrap;
-
-  }
-
-  .modal-wrapper {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .modal-title {
-    color: #ffb703
-  }
-
   .modal-list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top:-10px;
 
     li {
       text-align: left;
@@ -63,10 +27,6 @@
       padding-top: 5px;
       padding-bottom: 5px;
     }
-
-    .one {
-      fill: green;
-    }
   }
 
   .how-to-play-modal__close-button {
@@ -83,4 +43,7 @@
     user-select: none;
     cursor: pointer;
   }
-}
+
+  h3 {
+    margin-top:-20px;
+  }
