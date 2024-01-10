@@ -1,51 +1,21 @@
 import { useReducer } from "react";
-
-const initialState = {
-  isModalOpen: false
-}
-
-const appReducer = (state, action) => {
-  switch (action.type) {
-
-    // open modal case can include 'modalType' as a variable if/when multiple modals are introduced, if there is a need to differentiate
-    case 'OPEN_MODAL':
-      return {
-        ...state,
-        isModalOpen: true,
-        // modalType
-      };
-
-    case 'CLOSE_MODAL':
-      return {
-        ...state,
-        isModalOpen: false,
-        // modalType: null
-      };
-
-    default:
-      return state;
-
-  }
-}
-
-
+import { initialState, reducer, actionTypes } from "./reducer";
 
 function useApplicationData() {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const openModal = () => {
-    dispatch({ type: 'OPEN_MODAL' });
+  const openModal = (modalType) => {
+    dispatch({ type: actionTypes.OPEN_MODAL, payload: { modalType } });
   };
 
   const closeModal = () => {
-    dispatch({ type: "CLOSE_MODAL" });
+    dispatch({ type: actionTypes.CLOSE_MODAL });
   };
 
-  return { 
+  return {
     isModalOpen: state.isModalOpen,
+    modalType: state.modalType,
     openModal,
     closeModal,
   };
-};
-
-export default useApplicationData;
+}
