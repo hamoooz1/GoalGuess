@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-const { useState, createContext, useContext } = require("react");
+
+import { useState, createContext, useContext } from "react";
 
 export const authContext = createContext();
 
@@ -10,53 +10,35 @@ export const useAuth = function () {
 
 const AuthProvider = function (props) {
   const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
-  // const navigate = useNavigate();
-
-  const handleLogin = function (email, password) {
-    return (
-      axios
-        .post("/users/login", { email, password })
-        .then((res) => {
-          console.log(res.data);
-          setUser({ email, password });
-        })
-        // .then(() => {
-        //   navigate("/");
-        // })
-        .catch((error) => {
-          console.error("login error:", error);
-          setError(error.response.data.error);
-        })
-    );
+  const login = function (email, password) {
+    // setUser({ email: "a@a.gmail.com", name: "Alice" });
+    // return;
+    return axios.post("/users/login", { email, password }).then((res) => {
+      setUser(res.data);
+    });
   };
-  const handleLogout = () => {
-    return axios
-      .post("/users/logout")
-      .then((res) => {
-        console.log(res.data);
-        setUser(null);
-      })
-      .catch((error) => {
-        console.error("logout error:", error);
-        setError(error.response.data.error);
-      });
-  };
-  const handleSignUp = function (name, email, password) {
-    return axios
-      .post("/users/sigUp", { name, email, password })
-      .then((res) => {
-        // console.log(res.data);
-        setUser({ name, email, password });
-      })
-      .catch((error) => {
-        console.error("login error:", error);
-        setError(error.response.data.error);
-      });
+  const logout = () => {
+    setUser(null);
+    return;
+    // return axios.post("/users/logout").then((res) => {
+    //   setUser(null);
+    // });
   };
 
-  const value = { user, handleLogin, handleSignUp, handleLogout };
+  const createUser = function (name, email, password) {
+    axios.post("/users/sigUp", { name, email, password }).then((res) => {
+      setUser(res.data);
+    });
+  };
+
+  const value = {
+    user,
+    login,
+    createUser,
+    logout,
+  };
   return (
     <authContext.Provider value={value}>{props.children}</authContext.Provider>
   );

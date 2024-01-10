@@ -1,26 +1,51 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
 
 import NavBar from "../components/NavBar";
+import Login from "./Login";
+import Signup from "./Signup";
 
 import "../styles/homepage.scss";
 
 import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-import Footer from "../components/footer";
 
-function Homepage({ state, handleLogout }) {
+import {useAuth} from "../providers/AuthProvider";
+
+function Homepage() {
+  const {user, logout, login, createUser} = useAuth();
+  const [page, setPage] = useState(user ? 'home' : 'login');
+  // const [page, setPage] = useState('home');
+
+  // const user = null;
+  // const logout = null;
+  function handleLogout(e) {
+    e.preventDefault();
+    logout();
+    setPage('login');
+  }
   return (
     <article className="homepage">
-      <NavBar />
-      <BackgroundVideo />
-      <div className="content">
-        <AnimatedTextCharacter
-          className="homepage__title"
-          text="GoalGuess"
-          isInView="true"
-        />
-      </div>
+      <NavBar
+        user={user}
+        logout={handleLogout}
+
+        done={() => setPage('login')} />
+
+      {page == "login" && <Login done={() => setPage('home')} />}
+      {page == "signup" && <Signup done={() => setPage('home')} />}
+
+      {page == 'home' &&
+        <>
+          <BackgroundVideo />
+          <div className="content">
+            <AnimatedTextCharacter
+              className="homepage__title"
+              text="GoalGuess"
+              isInView="true"
+            />
+          </div>
+        </>
+      }
     </article>
   );
 }

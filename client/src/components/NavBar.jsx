@@ -1,33 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import React, {useState, useEffect} from "react";
+import {useAuth} from "../providers/AuthProvider";
 import "../styles/navBar.scss";
 
 import goalGuessLogo from "../football_b.svg";
 
-function NavBar({ user, handleLogout }) {
-  // const navigate = useNavigate();
-  // const handleClick = () => {
-  //   console.log("button");
-  //   handleLogout().then(() => navigate("/"));
-  // };
+function NavBar(props) {
 
+  function logout() {
+    props.logout();
+    props.done();
+  }
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
-        <Link to="/">
+        <span to="/">
           <img src={goalGuessLogo} className="goalGuesslogo" />
-        </Link>
+        </span>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <Link to="#" className="item__link">
+            <span to="#" className="item__link">
               How to play
-            </Link>
+            </span>
           </li>
           <li className="menu__item">
-            <Link to="#" className="item__link">
+            <span className="item__link">
               Leaderboard
-            </Link>
+            </span>
           </li>
         </ul>
       </div>
@@ -35,22 +33,24 @@ function NavBar({ user, handleLogout }) {
         <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        {user && (
+        {!!props.user && (
           <>
-            <span className="navBar__logged">Logged in as {user.email}</span>
-            <button className="btn" onClick={handleLogout}>
+            <span className="navBar__logged">
+              Logged in as {props.user.name}
+            </span>
+            <button className="btn" onClick={props.logout}>
               Logout
             </button>
           </>
         )}
-        {!user && (
+        {!props.user && (
           <>
-            <Link to="/login" className="item__link">
+            <span onClick={props.login} className="item__link">
               Login
-            </Link>
-            <Link to="/signup" className="item__link">
+            </span>
+            <span onClick={props.signup} className="item__link">
               Signup
-            </Link>
+            </span>
           </>
         )}
       </div>
