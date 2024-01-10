@@ -3,8 +3,6 @@ import "../styles/playerstats.scss";
 
 export default function PlayerStats() {
 
-
-
   return (
   <div className="player-stats-container">
     <h1 className="stats-header">Player Stats</h1>

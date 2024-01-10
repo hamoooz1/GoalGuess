@@ -3,7 +3,7 @@ import {motion, useAnimation, useInView} from "framer-motion";
 import "../styles/homepage.scss";
 
 
-const AnimatedTextCharacter = ({text}) => {
+const AnimatedTextCharacter = ({text, handlePlay}) => {
   const letters = Array.from(text);
   const controls = useAnimation();
 
@@ -62,14 +62,13 @@ const AnimatedTextCharacter = ({text}) => {
         ))}
       </motion.div>
 
-      <a href="/play" className="item__link">
-        <button className="contact-button btn" style={{
+        <button onClick={() => handlePlay()}className="contact-button" style={{
           fontSize: '1.7rem',
           marginLeft: '-15px',
+          alignItems: 'center',
           backgroundColor: '#023047',
         }}>
           PLAY </button>
-      </a>
     </>
   );
 };

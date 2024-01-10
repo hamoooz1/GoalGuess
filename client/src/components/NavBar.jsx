@@ -15,7 +15,7 @@ function NavBar(props) {
     <nav className="navBar">
       <div className="navBar__left-part">
         <span to="/">
-          <img src={goalGuessLogo} className="goalGuesslogo" />
+          <img onClick={props.handleHome} src={goalGuessLogo} className="goalGuesslogo" />
         </span>
         <ul className="navBar__menu">
           <li className="menu__item">
@@ -31,7 +31,7 @@ function NavBar(props) {
         </ul>
       </div>
       <div>
-        <h1 className="navBar__title">GOALGUESS</h1>
+        <h1 onClick={props.handleHome} className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
         {!!props.user && (
