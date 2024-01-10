@@ -1,0 +1,13 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../field.png");
+  background-size: cover;
+}
+.login__title {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  margin-left: 1.7rem;
+  color: #023047;
+  font-weight: bold;
+}

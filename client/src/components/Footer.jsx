@@ -1,7 +1,10 @@
 import React from "react";
+
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+
+
 import "../styles/footer.scss";
 
 
@@ -11,7 +14,7 @@ function Footer() {
       <div className="inner-footer">
         <h1>Have any questions?</h1>
         <p>
-If you have any suggestions, bug reports, or general feedback to enhance your experience, we value your input and encourage you to share your thoughts with us. Your insights play a crucial role in our ongoing commitment to improving and refining our services.</p>
+          If you have any suggestions, bug reports, or general feedback to enhance your experience, we value your input and encourage you to share your thoughts with us. Your insights play a crucial role in our ongoing commitment to improving and refining our services.</p>
         <button className="contact-button">Contact</button>
         <div className="contact-info">
           <h1 className="goal-guess-logo">Goal <br />Guess<br /></h1>
