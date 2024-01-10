@@ -1,27 +1,32 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import React, {useState, useEffect} from "react";
+import {useAuth} from "../providers/AuthProvider";
 import "../styles/navBar.scss";
 
-import goalGuessLogo from "../football.svg";
+import goalGuessLogo from "../football_b.svg";
 
-function NavBar() {
+function NavBar(props) {
+  console.log('user', props.user);
+
+  // function logout() {
+  //   props.logout();
+  //   props.done();
+  // }
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
-        <Link to="/">
+        <span to="/">
           <img src={goalGuessLogo} className="goalGuesslogo" />
-        </Link>
+        </span>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <Link to="#" className="item__link">
+            <span to="#" className="item__link">
               How to play
-            </Link>
+            </span>
           </li>
           <li className="menu__item">
-            <Link to="#" className="item__link">
+            <span className="item__link">
               Leaderboard
-            </Link>
+            </span>
           </li>
         </ul>
       </div>
@@ -29,12 +34,26 @@ function NavBar() {
         <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        <Link to="/login" className="item__link">
-          Login
-        </Link>
-        <Link to="/signUp" className="item__link">
-          Sign up
-        </Link>
+        {!!props.user && (
+          <>
+            <span className="navBar__logged">
+              Logged in as {props.user.name}
+            </span>
+            <button className="btn" onClick={props.logout}>
+              Logout
+            </button>
+          </>
+        )}
+        {!props.user && (
+          <>
+            <span onClick={props.handleLoginClick} className="item__link">
+              Login
+            </span>
+            <span onClick={props.handleSignupClick} className="item__link">
+              Signup
+            </span>
+          </>
+        )}
       </div>
     </nav>
   );
