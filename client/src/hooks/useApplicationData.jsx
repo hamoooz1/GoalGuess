@@ -19,3 +19,5 @@ function useApplicationData() {
     closeModal,
   };
 }
+
+export default useApplicationData;

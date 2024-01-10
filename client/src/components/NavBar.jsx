@@ -1,31 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import useApplicationData from "../hooks/useApplicationData";
 
 import "../styles/navBar.scss";
 
-import goalGuessLogo from "../goalGuessLogo.png";
-
-function NavBar() {
-  const { openModal } = useApplicationData();
+function NavBar({ openModal }) {
+  const openHowToPlayModal = () => {
+    openModal();
+  };
   return (
     <nav className="navBar">
       <div className="navBar__left-part">
-        <Link to="/">
-          <img src={goalGuessLogo} className="goalGuesslogo" />
-        </Link>
+        <a href="/">
+          <img src="client/public/goalGuessLogo.png" className="goalGuesslogo" alt="Goal Guess Logo" />
+        </a>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <a href="#" onClick={openModal}>How to play</a>
+            <a href="#" className="item__link" onClick={openHowToPlayModal}>
+              How to play
+            </a>
           </li>
           <li className="menu__item">
-            <Link to="/">Leaderboard</Link>
+            <a href="#" className="item__link">
+              Leaderboard
+            </a>
           </li>
         </ul>
       </div>
+      <div>
+        <h1 className="navBar__title">GOALGUESS</h1>
+      </div>
       <div className="navBar__right-part">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        <a href="/login" className="item__link">
+          Login
+        </a>
+        <a href="/signUp" className="item__link">
+          Sign up
+        </a>
       </div>
     </nav>
   );

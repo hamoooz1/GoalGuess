@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
 
@@ -8,17 +7,17 @@ import "../styles/navBar.scss";
 
 import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
+import HowToPlayModal from "../modals/HowToPlayModal";
 
-function Homepage() {
-  const { isModalOpen, openModal, closeModal } = useApplicationData();
+function Homepage({ openModal, closeModal, isModalOpen }) {
   return (
     <article className="homepage">
-      <NavBar />
+      <NavBar closeModal={closeModal} isModalOpen={isModalOpen} openModal={openModal} />
 
       <BackgroundVideo />
-      <div className="content">
+      {/* <div className="content">
         <h1 className="homepage__title">WELCOME</h1>
-      </div>
+      </div> */}
     </article>
   );
 }
