@@ -4,8 +4,8 @@ import { initialState, reducer, actionTypes } from "./reducer";
 function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const openModal = () => {
-    dispatch({ type: actionTypes.OPEN_MODAL });
+  const openModal = (modalType) => {
+    dispatch({ type: actionTypes.OPEN_MODAL, payload: { modalType } });
   };
 
   const closeModal = () => {
@@ -14,6 +14,7 @@ function useApplicationData() {
 
   return {
     isModalOpen: state.isModalOpen,
+    modalType: state.modalType,
     openModal,
     closeModal,
   };

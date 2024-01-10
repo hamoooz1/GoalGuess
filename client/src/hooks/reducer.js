@@ -1,5 +1,6 @@
 export const initialState = {
   isModalOpen: false,
+  modalType: null,
 };
 
 export const actionTypes = {
@@ -13,11 +14,13 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isModalOpen: true,
+        modalType: action.payload.modalType,
       };
     case actionTypes.CLOSE_MODAL:
       return {
         ...state,
         isModalOpen: false,
+        modalType: null,
       };
     default:
       return state;
