@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 
 import NavBar from "../components/NavBar";
-import BackgroundVideo from "../components/BackgroundVideo";
 import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-
+import BackgroundVideo from "../components/BackgroundVideo";
+// import Footer from "../components/Footer";
 
 import Login from "./Login";
 import Signup from "./Signup";
@@ -11,11 +11,6 @@ import Signup from "./Signup";
 import "../styles/homepage.scss";
 
 import {useAuth} from "../providers/AuthProvider";
-
-
-import BackgroundVideo from "../components/BackgroundVideo";
-import AnimatedTextCharacter from "../components/AnimatedTextCharacter";
-import Footer from "../components/Footer";
 
 
 function Homepage() {
@@ -65,7 +60,7 @@ function Homepage() {
           </div>
         </>
       }
-      <Footer />
+      {/* <Footer /> */}
     </article>
   );
 }

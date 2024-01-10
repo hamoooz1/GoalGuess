@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import React, {useEffect, useState, useRef} from "react";
+import {motion, useAnimation, useInView} from "framer-motion";
 import "../styles/homepage.scss";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-const AnimatedTextCharacter = ({ text }) => {
+const AnimatedTextCharacter = ({text}) => {
   const letters = Array.from(text);
   const controls = useAnimation();
 
   const container = {
-    hidden: { opacity: 0 },
+    hidden: {opacity: 0},
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { staggerChildren: 0.3, delayChildren: 0.4 * i },
+      transition: {staggerChildren: 0.3, delayChildren: 0.4 * i},
     }),
   };
 
@@ -41,36 +41,36 @@ const AnimatedTextCharacter = ({ text }) => {
 
   return (
     <>
-    <motion.div
-      style={{
-        marginTop: "-85px",
-        fontSize: "10rem",
-        color: "#ffb703",
-      }}
-      variants={container}
-      initial="hidden"
-      animate="visible"
+      <motion.div
+        style={{
+          marginTop: "-85px",
+          fontSize: "10rem",
+          color: "#ffb703",
+        }}
+        variants={container}
+        initial="hidden"
+        animate="visible"
       // whileHover={{
-        //   textShadow: "20px 20px 14px rgba(255, 183, 3, 0.3)",
-        //   transition: { duration: 0.02 },
-        // }}
-        >
-      {letters.map((letter, index) => (
-        <motion.span variants={child} key={index}>
-          {letter === " " ? "\u00A0" : letter}
-        </motion.span>
-      ))}
-    </motion.div>
+      //   textShadow: "20px 20px 14px rgba(255, 183, 3, 0.3)",
+      //   transition: { duration: 0.02 },
+      // }}
+      >
+        {letters.map((letter, index) => (
+          <motion.span variants={child} key={index}>
+            {letter === " " ? "\u00A0" : letter}
+          </motion.span>
+        ))}
+      </motion.div>
 
-    <Link to="/play" className="item__link">
-      <button className="contact-button" style={{
-        fontSize: '1.7rem',
-        marginLeft: '-15px',
-        backgroundColor: '#023047',
-     }}>
-     PLAY </button>
-    </Link>
-  </>
+      <a href="/play" className="item__link">
+        <button className="contact-button btn" style={{
+          fontSize: '1.7rem',
+          marginLeft: '-15px',
+          backgroundColor: '#023047',
+        }}>
+          PLAY </button>
+      </a>
+    </>
   );
 };
 
