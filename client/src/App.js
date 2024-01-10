@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import NavBar from "./components/NavBar";
 import Homepage from "./pages/Homepage";
@@ -10,14 +11,23 @@ function App() {
   const {
     openModal,
     closeModal,
-    isModalOpen
+    isModalOpen,
+    modalType
   } = useApplicationData();
 
   return (
     <div className="App">
-      <Homepage openModal={openModal} isModalOpen={isModalOpen} closeModal={closeModal} />
-      {isModalOpen && <ModalBackdrop onClick={closeModal} />}
-      {isModalOpen && <HowToPlayModal closeModal={closeModal} />}
+      <Router>
+        <Routes>
+        <Route
+            path="/"
+            element={<Homepage openModal={openModal} isModalOpen={isModalOpen} closeModal={closeModal} modalType={modalType} />}
+          />
+        </Routes>
+        {isModalOpen && <ModalBackdrop onClick={closeModal} />}
+        {isModalOpen && modalType === "howToPlay" && <HowToPlayModal closeModal={closeModal} />}
+
+      </Router>
     </div>
 
   );

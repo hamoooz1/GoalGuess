@@ -20,7 +20,7 @@ const HowToPlayModal = ({ closeModal, isModalOpen }) => {
             How to Play
           </h1>
           <h3>
-            Guess the name of the footballer within 6 attempts
+            Guess the name of the Premier League player within 6 attempts
           </h3>
           <ul className="modal-list">
             <li>Use the search bar to guess a name</li>
@@ -32,8 +32,8 @@ const HowToPlayModal = ({ closeModal, isModalOpen }) => {
               <img className="circle five" src={howToPlayCircleUp} />
               <img className="circle six" src={howToPlayCircleDown} />
             </div>
-            <li>The first three items will turn green if you've correctly guessed the player's Nationality, League, Team, or Position</li>
-            <li>The last two indicate whether the player's age and number are higher or lower than that of the player you guessed</li>
+            <li>The first three items will turn green if you've correctly guessed the player's Nationality, Team, or Position</li>
+            <li>The last two indicate whether the mystery player's age and number are higher or lower than that of the player you guessed</li>
           </ul>
         </div>
       </div>

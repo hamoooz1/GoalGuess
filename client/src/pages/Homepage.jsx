@@ -9,7 +9,7 @@ import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import HowToPlayModal from "../modals/HowToPlayModal";
 
-function Homepage({ openModal, closeModal, isModalOpen }) {
+function Homepage({ openModal, closeModal, isModalOpen, modalType }) {
   return (
     <article className="homepage">
       <NavBar closeModal={closeModal} isModalOpen={isModalOpen} openModal={openModal} />

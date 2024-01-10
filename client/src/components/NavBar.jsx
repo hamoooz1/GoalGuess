@@ -4,7 +4,7 @@ import "../styles/navBar.scss";
 
 function NavBar({ openModal }) {
   const openHowToPlayModal = () => {
-    openModal();
+    openModal("howToPlay");
   };
   return (
     <nav className="navBar">
