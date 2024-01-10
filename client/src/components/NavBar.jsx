@@ -1,11 +1,14 @@
 import React from "react";
-
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/navBar.scss";
+import goalGuessLogo from "../football_b.svg";
 
-function NavBar({ openModal }) {
+function NavBar({ openModal, handleLogout }) {
   const openHowToPlayModal = () => {
     openModal("howToPlay");
   };
+  const navigate = useNavigate();
+
   return (
     <nav className="navBar">
       <div className="navBar__left-part">

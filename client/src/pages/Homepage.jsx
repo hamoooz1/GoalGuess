@@ -1,11 +1,6 @@
 import React from "react";
-
 import NavBar from "../components/NavBar";
-
 import "../styles/homepage.scss";
-import "../styles/navBar.scss";
-
-import goalGuessLogo from "../goalGuessLogo.png";
 import BackgroundVideo from "../components/BackgroundVideo";
 import HowToPlayModal from "../modals/HowToPlayModal";
 
