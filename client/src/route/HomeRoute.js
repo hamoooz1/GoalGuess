@@ -1,4 +1,3 @@
-// import Homepage from "./pages/Homepage";
 import Homepage from "../pages/Homepage";
 
 function HomeRoute() {
