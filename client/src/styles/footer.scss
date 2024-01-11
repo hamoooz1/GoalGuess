@@ -8,8 +8,8 @@ body {
   align-items: center;
   background-color: #023047;
   color: white;
-  width: 100%; 
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+  width: 100%;
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   height: 100vh;
 }
 
@@ -25,22 +25,20 @@ body {
 }
 
 .contact-button {
-  background-color: #3498db; 
-  color: white; 
+  background-color: #3498db;
+  color: white;
   margin: 15px;
   height: 40px;
-  width: 120px; 
+  width: 120px;
   border: none;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover effect */
-.contact-button:hover {
-  background-color: #2980b9;
+  &:hover {
+    background-color: #2980b9;
+  }
 }
 
 .contact-info {
@@ -64,7 +62,7 @@ body {
   align-items: flex-start;
 }
 
-.about-us h4{
+.about-us h4 {
   border-bottom: solid 2px white;
   padding: 2px;
 }

@@ -5,7 +5,6 @@ import "../styles/navBar.scss";
 import goalGuessLogo from "../football_b.svg";
 
 function NavBar(props) {
-  console.log('user', props.user);
 
   // function logout() {
   //   props.logout();
@@ -13,6 +12,7 @@ function NavBar(props) {
   // }
   return (
     <nav className="navBar">
+
       <div className="navBar__left-part">
         <span to="/">
           <img onClick={props.handleHome} src={goalGuessLogo} className="goalGuesslogo" />

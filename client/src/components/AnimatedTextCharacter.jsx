@@ -61,74 +61,9 @@ const AnimatedTextCharacter = ({text, handlePlay}) => {
           </motion.span>
         ))}
       </motion.div>
-
-        <button onClick={() => handlePlay()}className="contact-button" style={{
-          fontSize: '1.7rem',
-          marginLeft: '-15px',
-          alignItems: 'center',
-          backgroundColor: '#023047',
-        }}>
-          PLAY </button>
     </>
   );
 };
 
-// const AnimatedTextCharacter = ({ text }) => {
-//   const letters = Array.from(text);
-//   const [visible, setVisible] = useState(false);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setVisible((prevVisible) => !prevVisible);
-//     }, 3000); // Change this value to set the interval in milliseconds (e.g., 3000 for 3 seconds)
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   const childVariants = {
-//     hidden: {
-//       opacity: 0,
-//       x: -20,
-//       y: 10,
-//       transition: {
-//         type: "spring",
-//         damping: 12,
-//         stiffness: 100,
-//       },
-//     },
-//     visible: {
-//       opacity: 1,
-//       x: 0,
-//       y: 0,
-//       transition: {
-//         type: "spring",
-//         damping: 12,
-//         stiffness: 100,
-//       },
-//     },
-//   };
-
-//   return (
-//     <motion.div
-//       style={{
-//         overflow: "hidden",
-//         display: "flex",
-//         fontSize: "10rem",
-//         color: "#ffb703",
-//       }}
-//     >
-//       {letters.map((letter, index) => (
-//         <motion.span
-//           key={index}
-//           initial="hidden"
-//           animate={visible ? "visible" : "hidden"}
-//           variants={childVariants}
-//         >
-//           {letter === " " ? "\u00A0" : letter}
-//         </motion.span>
-//       ))}
-//     </motion.div>
-//   );
-// };
 
 export default AnimatedTextCharacter;

@@ -2,36 +2,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  width: 30%;
-  box-shadow: 5px 5px 40px #023047;
-  padding: 2rem;
+  // gap: 20px;
+  width: 25%;
+
+  padding: 1.5rem;
   border-radius: 10px;
   margin: 0 auto 5rem auto;
-  background-image: linear-gradient(
-    to bottom,
-    #023047 0%,
-    #219ebc 51%,
-    #fff 100%
-  );
+  box-shadow: 0 0 20px #eee;
+  // background-image: linear-gradient(
+  //   to bottom,
+  //   #023047 0%,
+  //   #219ebc 51%,
+  //   #fff 100%
+  // );
+  background-color: #023047;
   &:hover {
-    // box-shadow: 5px 5px 40px #023047;
-    box-shadow: 0 0 20px #eee;
+    box-shadow: 5px 5px 40px #023047;
   }
 }
 
 .form__label {
   align-self: flex-start;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #ffb703;
+  margin-bottom: 10px;
 }
 .form__input {
   width: 100%;
-
+  background-color: rgb(255, 255, 255, 0.8);
   border: 3px solid #023047;
+  font-size: 0.8rem;
   box-shadow: 5px 5px 40px #023047;
   border-radius: 10px;
-  padding: 8px;
+  padding: 5px;
+  margin-bottom: 20px;
   &:hover {
     box-shadow: 0 0 20px #eee;
   }
