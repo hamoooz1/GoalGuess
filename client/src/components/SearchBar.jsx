@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import React, {useEffect, useState} from "react";
+import {FaSearch} from "react-icons/fa";
 import axios from "axios";
 import "../styles/searchbar.scss";
 import PlayerDropdown from "./PlayerDropdown";
@@ -18,13 +18,14 @@ export default function SearchBar() {
 
   const selectFootballer = (player) => {
     setSelectedFootballer(player);
-  }
+  };
 
   useEffect(() => {
     axios
       .get("/api/footballers")
       .then((response) => {
         const results = response.data;
+        console.log(results);
         setFootballers(results);
         setAllFootballers(results);
       })
@@ -42,16 +43,16 @@ export default function SearchBar() {
 
   return (
     <>
-    <div className="input-wrapper">
-      <FaSearch />
-      <input
-        onChange={(e) => handleInput(e.target.value)}
-        onFocus={() => setShowDropdown(true)}
-        onBlur={() => setShowDropdown(false)}
-        placeholder="Search Player"
+      <div className="input-wrapper">
+        <FaSearch />
+        <input
+          onChange={(e) => handleInput(e.target.value)}
+          onFocus={() => setShowDropdown(true)}
+          onBlur={() => setShowDropdown(false)}
+          placeholder="Search Player"
         />
-    </div>
-    <PlayerDropdown showDropdown={showDropdown} footballers={footballers} selectFootballer={selectFootballer}/>
-      </>
+      </div>
+      <PlayerDropdown showDropdown={showDropdown} footballers={footballers} selectFootballer={selectFootballer} />
+    </>
   );
 }
