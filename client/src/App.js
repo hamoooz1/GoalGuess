@@ -1,12 +1,15 @@
 import "./App.scss";
 import HomeRoute from "./route/HomeRoute";
 import AuthProvider from "./providers/AuthProvider";
+import { ModalProvider } from "./providers/ModalProvider";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <HomeRoute />
+        <ModalProvider>
+          <HomeRoute />
+        </ModalProvider>
       </AuthProvider>
     </div>
   );

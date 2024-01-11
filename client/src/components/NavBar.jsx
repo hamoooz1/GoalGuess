@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from "react";
 import {useAuth} from "../providers/AuthProvider";
+import { useModal } from "../providers/ModalProvider";
 import "../styles/navBar.scss";
+import HowToPlayModal from "./HowToPlayModal";
 
 import goalGuessLogo from "../football_b.svg";
 
 function NavBar(props) {
+  const { isModalOpen, openModal, closeModal } = useModal();
 
   // function logout() {
   //   props.logout();
@@ -19,7 +22,7 @@ function NavBar(props) {
         </span>
         <ul className="navBar__menu">
           <li className="menu__item">
-            <span to="#" className="item__link">
+            <span to="#" onClick={openModal} className="item__link">
               How to play
             </span>
           </li>
@@ -55,6 +58,7 @@ function NavBar(props) {
           </>
         )}
       </div>
+      {isModalOpen && <HowToPlayModal closeModal={closeModal} />}
     </nav>
   );
 }
