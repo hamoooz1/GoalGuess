@@ -1,7 +1,12 @@
 .playing-layout h1 {
   font-size: 48px;
+}
+
+.playing-layout {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .grid-container {

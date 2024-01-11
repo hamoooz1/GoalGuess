@@ -14,9 +14,8 @@ function Play () {
       <h1>Goal Guess</h1>
       <h2>Premier Soccer Player Guessing Game</h2>
       <p>{guessCount} of 8 guesses</p>
-    <SearchBar />
+    <SearchBar className="input-bar"/>
     </div>
-
 
     <div className="grid-container">
       {[...Array(5)].map((_, rowIndex) => (
