@@ -1,8 +1,13 @@
 .signUp {
   display: flex;
   flex-direction: column;
-  background-image: url("../field.png");
-  background-size: cover;
+  // background-image: url("../field.png");
+  // background-size: cover;
+  // background-color: rgba(62, 133, 134, 0.5);
+  background-image: linear-gradient(
+    to right,
+    rgba(2, 48, 71, 0.4) 0% rgba(2, 48, 71, 0.8) 100%
+  );
 }
 .signUp__title {
   font-size: 1.5rem;

@@ -40,8 +40,6 @@ router.post("/signUp", (req, res) => {
     .getUserByEmail(email)
     .then((existingUser) => {
       if (existingUser) {
-        // return res.status(400).json({ error: "Email already exists" });
-        // throw new Error("User with this email already exists");
         return res
           .status(400)
           .json({ error: "User with this email already exists" });
@@ -55,11 +53,13 @@ router.post("/signUp", (req, res) => {
       if (!addedUser) {
         return res.status(500).json({ error: "Error creating user" });
       }
-      req.session.userId = addedUser.id;
-      res.status(201).json({ message: "User created successfully" });
+      // req.session.userId = addedUser.id;
+      // res.status(201).json({ message: "User created successfully" });
+      res
+        .status(201)
+        .json({ user: { name: name, email: email, password: password } });
     })
     .catch((err) => {
-      console.error("Error during user creation:", err);
       res.status(500).json({ error: "Internal server error" });
     });
 });
@@ -80,7 +80,8 @@ router.post("/login", (req, res) => {
           return res.status(401).json({ error: "Invalid password" });
         }
 
-        req.session.userId = user.id;
+        // req.session.userId = user.id;
+
         return res.status(200).json({
           user: {
             name: user.full_name,
@@ -97,19 +98,20 @@ router.post("/login", (req, res) => {
 });
 
 // Log a user out
-router.post("/logout", (req, res) => {
-  req.session.userId = null;
-});
+// router.post("/logout", (req, res) => {
+//   req.session = null;
+// });
 
-// router.get('/', (req, res) => {
-//   userQueries.getUsers()
-//     .then(users => {
+// router.get("/", (req, res) => {
+//   const email = req.session.userEmail;
+
+//   userQueries
+//     .getUsers()
+//     .then((users) => {
 //       res.json({ users });
 //     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
+//     .catch((err) => {
+//       res.status(500).json({ error: err.message });
 //     });
 // });
 

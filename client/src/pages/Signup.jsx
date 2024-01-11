@@ -1,5 +1,8 @@
 import React, {useState, useContext} from "react";
+
 import {useAuth} from "../providers/AuthProvider";
+
+
 
 import "../styles/signUp.scss";
 import "../styles/form.scss";
@@ -7,11 +10,12 @@ import "../styles/error.scss";
 import "../styles/buttons.scss";
 
 function Signup(props) {
-  const {createUser} = useAuth();
+  const {signup} = useAuth();
 
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
 
   const [error, setError] = useState(null);
 
@@ -34,15 +38,17 @@ function Signup(props) {
       return;
     }
 
-    createUser(name, email, password)
-      .then(() => props.done());
-  };
+    signup(name, email, password)
+      .then(() => props.done())
+      .catch((error) => setError(error.response.data.error || 'Signup failed'));
 
+  };
   return (
     <div className="signUp">
       <h3 className="signUp__title">Sign up</h3>
       <form className="form" onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
+
         <label className="form__label" htmlFor="name">
           Full name
         </label>
@@ -52,7 +58,6 @@ function Signup(props) {
           name="name"
           placeholder="Full name"
           value={name}
-          // onChange={handleNameChange}
           onChange={(e) => setName(e.target.value)}
         />
         <label className="form__label" htmlFor="email">
@@ -64,7 +69,6 @@ function Signup(props) {
           name="email"
           placeholder="Email"
           value={email}
-          // onChange={handleEmailChange}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label className="form__label" htmlFor="password">
@@ -76,20 +80,18 @@ function Signup(props) {
           name="password"
           placeholder="Password"
           value={password}
-          // onChange={handlePasswordChange}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit" className="btn">
           Sign up
         </button>
-        <a className="item__link">
+        <a className="item__link" onClick={props.handleLoginClick}>
           Already have an account? Login
         </a>
       </form>
     </div>
   );
-}
+};
 
 export default Signup;
-
 

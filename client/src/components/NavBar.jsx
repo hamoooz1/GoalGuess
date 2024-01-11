@@ -6,10 +6,14 @@ function NavBar({ openModal, handleLogout }) {
   const openHowToPlayModal = () => {
     openModal("howToPlay");
   };
-  const navigate = useNavigate();
 
+  // function logout() {
+  //   props.logout();
+  //   props.done();
+  // }
   return (
     <nav className="navBar">
+
       <div className="navBar__left-part">
         <a href="/">
           <img src="client/public/goalGuessLogo.png" className="goalGuesslogo" alt="Goal Guess Logo" />
@@ -28,7 +32,7 @@ function NavBar({ openModal, handleLogout }) {
         </ul>
       </div>
       <div>
-        <h1 className="navBar__title">GOALGUESS</h1>
+        <h1 onClick={props.handleHome} className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
         <a href="/login" className="item__link">

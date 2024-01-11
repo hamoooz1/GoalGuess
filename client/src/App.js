@@ -1,8 +1,6 @@
 import React from 'react';
 import "./App.scss";
 import Homepage from "./pages/Homepage";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
 import useApplicationData from "./hooks/useApplicationData";
 import HowToPlayModal from "./modals/HowToPlayModal";
 import ModalBackdrop from "./components/ModalBackdrop";

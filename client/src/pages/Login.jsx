@@ -1,33 +1,23 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useForm from "../hooks/useForm";
-import axios from "axios";
+import React, {useState, useContext} from "react";
+import {useAuth} from "../providers/AuthProvider";
 
-import goalGuessLogo from "../football.svg";
-import BackgroundVideo from "../components/BackgroundVideo";
-import NavBar from "../components/NavBar";
-import Footer from "../components/footer";
 
 import "../styles/login.scss";
 import "../styles/form.scss";
 import "../styles/error.scss";
 import "../styles/buttons.scss";
 
-function Login({
-  state,
-  setEmail,
-  setPassword,
-  setError,
-  handleLogin,
-  handleLogout,
-}) {
-  const { email, password, error } = state;
+function Login(props) {
+  const {login} = useAuth();
 
-  const navigate = useNavigate();
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [error, setError] = useState(null);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     if (!email || !password) {
       setError("Please fill in all fields");
       return;
@@ -43,15 +33,16 @@ function Login({
       setError("Password should be at least 5 characters");
       return;
     }
+    login(email, password)
+      .then(() => props.done())
+      .catch((error) => setError(error.response.data.error || 'Login failed'));
 
-    handleLogin().then(() => navigate("/"));
+    // props.done();
   };
 
   return (
     <div className="login">
-      <NavBar state={state} handleLogout={handleLogout} />
       <h3 className="login__title">Login</h3>
-
       <form className="form" onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
         <label className="form__label" htmlFor="email">
@@ -63,7 +54,6 @@ function Login({
           name="email"
           placeholder="Email"
           value={email}
-          // onChange={handleEmailChange}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label className="form__label" htmlFor="password">
@@ -75,52 +65,15 @@ function Login({
           name="password"
           placeholder="Password"
           value={password}
-          // onChange={handlePasswordChange}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit" className="btn">
           Login
         </button>
-        <Link to="/signUp" className="item__link">
-          Don't have an account? Sign Up
-        </Link>
+        <a onClick={props.handleSignupClick} className="item__link">Don't have an account? Sign Up</a>
       </form>
-      <Footer />
     </div>
   );
 }
 
 export default Login;
-// const [email, setEmail, handleEmailChange] = useForm("");
-// const [password, setPassword, handlePasswordChange] = useForm("");
-// const [error, setError] = useState("");
-// // const history = useHistory();
-
-// const handleSubmit = (event) => {
-//   event.preventDefault();
-
-//   if (!email || !password) {
-//     setError("Please fill in all fields");
-//     return;
-//   }
-
-//   const emailPattern = /\S+@\S+\.\S+/;
-//   if (!emailPattern.test(email)) {
-//     setError("Please enter a valid email address");
-//     return;
-//   }
-
-//   if (password.length < 5) {
-//     setError("Password should be at least 5 characters");
-//     return;
-//   }
-//   axios
-//     .post("/users/login", { email, password })
-//     .then((res) => {
-//       window.location.href = "/";
-//     })
-//     .catch((error) => {
-//       setError(error.response.data.error);
-//     });
-
-// };

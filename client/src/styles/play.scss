@@ -1,0 +1,28 @@
+.playing-layout h1 {
+  font-size: 48px;
+}
+
+.playing-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 85px;
+  background-color: white;
+  border: 3px solid grey; 
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
