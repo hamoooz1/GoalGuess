@@ -40,7 +40,7 @@ function Signup(props) {
 
     signup(name, email, password)
       .then(() => props.done())
-      .catch((error) => setError(error.response.data.error || 'Signup failed'));;
+      .catch((error) => setError(error.response.data.error || 'Signup failed'));
 
   };
   return (

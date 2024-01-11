@@ -34,8 +34,8 @@ function Login(props) {
       return;
     }
     login(email, password)
-      .then(() => props.done());
-    // .catch((err) => );
+      .then(() => props.done())
+      .catch((error) => setError(error.response.data.error || 'Login failed'));
 
     // props.done();
   };
