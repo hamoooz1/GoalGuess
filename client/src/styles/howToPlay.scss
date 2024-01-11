@@ -1,0 +1,49 @@
+.modal-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top:-10px;
+
+  li {
+    text-align: left;
+  }
+}
+
+.modal-text {
+  padding-left: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  color: #ffffff
+}
+
+.modal-circles {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+
+  .circle {
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.how-to-play-modal__close-button {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+h3 {
+  margin-top:-15px;
+}
