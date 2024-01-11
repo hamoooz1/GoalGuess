@@ -9,6 +9,8 @@
   padding: 0 15px;
   box-shadow: 0px 0px 8px #ddd;
   margin: 20px;
+  margin-top: 10px;
+  border: solid 2px black;
 }
 
 input {
@@ -26,4 +28,34 @@ input:focus {
 
 #search-icon {
   color: #023047;
+}
+
+.dropdown {
+  width: 100%;
+  font-size: 20px;
+  border: solid 2px black;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-bottom: .6rem;
+  max-height: 200px;
+  overflow-y: scroll;
+  z-index: 1;
+}
+
+.dropdown-item img {
+  height: 3em;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+  align-items: center;
+}
+
+.dropdown-item:hover {
+  background-color: #efefef;
 }
