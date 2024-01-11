@@ -31,7 +31,7 @@ function Homepage() {
   }
 
   function handleHome() {
-    setPage('home')
+    setPage('home');
   }
 
   function handleLoginClick() {
@@ -71,12 +71,14 @@ function Homepage() {
               isInView="true"
               handlePlay={handlePlay}
             />
+            <button onClick={() => handlePlay()} className="btn">PLAY</button>
           </div>
-      <StatsCentreNav />
-      <PlayerStats />
-      <Footer />
+          <StatsCentreNav />
+          <PlayerStats />
+
         </>
       }
+      <Footer />
     </article>
   );
 }

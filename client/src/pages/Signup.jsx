@@ -2,6 +2,8 @@ import React, {useState, useContext} from "react";
 
 import {useAuth} from "../providers/AuthProvider";
 
+
+
 import "../styles/signUp.scss";
 import "../styles/form.scss";
 import "../styles/error.scss";
