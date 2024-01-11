@@ -4,9 +4,9 @@ import axios from "axios";
 import "../styles/searchbar.scss";
 import PlayerDropdown from "./PlayerDropdown";
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   const [footballers, setFootballers] = useState([]);
-  const [selectedFootballer, setSelectedFootballer] = useState({});
+  const [selectedFootballer, setSelectedFootballer] = useState(null);
   const [allFootballers, setAllFootballers] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -18,6 +18,9 @@ export default function SearchBar() {
 
   const selectFootballer = (player) => {
     setSelectedFootballer(player);
+    setShowDropdown(false);
+    props.incrementCounter(props.guessCount);
+    console.log("Selected player:", player);
   }
 
   useEffect(() => {
@@ -47,7 +50,6 @@ export default function SearchBar() {
       <input
         onChange={(e) => handleInput(e.target.value)}
         onFocus={() => setShowDropdown(true)}
-        onBlur={() => setShowDropdown(false)}
         placeholder="Search Player"
         />
     </div>
