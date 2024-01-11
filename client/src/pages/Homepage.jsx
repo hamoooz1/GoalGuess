@@ -7,7 +7,6 @@ import Login from "./Login";
 import Signup from "./Signup";
 
 import "../styles/homepage.scss";
-import BackgroundVideo from "../components/BackgroundVideo";
 import HowToPlayModal from "../modals/HowToPlayModal";
 
 function Homepage({ openModal, closeModal, isModalOpen, modalType }) {

@@ -1,16 +1,23 @@
-import React from "react";
+import React from 'react';
+import Login from '../modals/Login';
+import Logout from '../components/Logout';
+import Signup from '../modals/Signup';
 import "../styles/navBar.scss";
-import goalGuessLogo from "../football_b.svg";
+import goalGuessLogo from '../football_b.svg';
 
-function NavBar({ openModal, handleLogout }) {
+function NavBar({ openModal, closeModal, isAuthenticated, handleLogout }) {
   const openHowToPlayModal = () => {
-    openModal("howToPlay");
+    openModal('howToPlay');
   };
 
-  // function logout() {
-  //   props.logout();
-  //   props.done();
-  // }
+  const openLoginModal = () => {
+    openModal('login');
+  };
+
+  const openSignupModal = () => {
+    openModal('signup');
+  };
+
   return (
     <nav className="navBar">
 
@@ -32,15 +39,21 @@ function NavBar({ openModal, handleLogout }) {
         </ul>
       </div>
       <div>
-        <h1 onClick={props.handleHome} className="navBar__title">GOALGUESS</h1>
+        <h1 className="navBar__title">GOALGUESS</h1>
       </div>
       <div className="navBar__right-part">
-        <a href="/login" className="item__link">
-          Login
-        </a>
-        <a href="/signUp" className="item__link">
-          Sign up
-        </a>
+        {isAuthenticated ? (
+          <Logout handleLogout={handleLogout} />
+        ) : (
+          <React.Fragment>
+            <a href="#" className="item__link" onClick={openLoginModal}>
+              Login
+            </a>
+            <a href="#" className="item__link" onClick={openSignupModal}>
+              Sign up
+            </a>
+          </React.Fragment>
+        )}
       </div>
     </nav>
   );
