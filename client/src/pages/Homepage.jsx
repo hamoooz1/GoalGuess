@@ -16,12 +16,16 @@ import StatsCentreNav from "../components/StatsCentreNav";
 import {useAuth} from "../providers/AuthProvider";
 import Play from "./Play";
 
+import HowToPlayModal from "../components/HowToPlayModal";
+import ModalBackdrop from "../components/ModalBackdrop";
+
 function Homepage() {
   const {user, logout} = useAuth();
 
   // const [page, setPage] = useState(user ? 'home' : 'login');
   const [page, setPage] = useState('home');
 
+  const [isHowToPlayModalOpen, setIsHowToPlayModalOpen] = useState(false);
   // const user = null;
   // const logout = null;
   function handleLogout(e) {
@@ -32,6 +36,7 @@ function Homepage() {
 
   function handleHome() {
     setPage('home');
+    setIsHowToPlayModalOpen(false);
   }
 
   function handleLoginClick() {
@@ -46,6 +51,15 @@ function Homepage() {
     setPage('play');
   }
 
+  const openHowToPlayModal = () => {
+    setPage('home');
+    setIsHowToPlayModalOpen(true);
+  };
+
+  const closeHowToPlayModal = () => {
+    setIsHowToPlayModalOpen(false);
+  };
+
   return (
     <article className="homepage">
       <NavBar
@@ -55,6 +69,7 @@ function Homepage() {
         handleLoginClick={handleLoginClick}
         handleSignupClick={handleSignupClick}
         handleHome={handleHome}
+        openHowToPlayModal={openHowToPlayModal}
       />
 
       {page == "login" && <Login done={() => setPage('home')} handleSignupClick={handleSignupClick} />}
@@ -79,6 +94,13 @@ function Homepage() {
         </>
       }
       <Footer />
+
+      {isHowToPlayModalOpen && (
+        <>
+          <HowToPlayModal closeModal={closeHowToPlayModal} />
+          <ModalBackdrop onClick={closeHowToPlayModal} />
+        </>
+      )}
     </article>
   );
 }
