@@ -20,11 +20,11 @@ const AuthProvider = function (props) {
     });
   };
   const logout = () => {
-    setUser(null);
-    return;
-    // return axios.post("/users/logout").then((res) => {
-    //   setUser(null);
-    // });
+    // setUser(null);
+    // return;
+    return axios.post("/users/logout").then((res) => {
+      setUser(null);
+    });
   };
 
   const signup = function (name, email, password) {
