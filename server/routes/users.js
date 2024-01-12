@@ -53,7 +53,7 @@ router.post("/signUp", (req, res) => {
       if (!addedUser) {
         return res.status(500).json({ error: "Error creating user" });
       }
-      // req.session.userId = addedUser.id;
+      req.session.userId = addedUser.id;
       // res.status(201).json({ message: "User created successfully" });
       res
         .status(201)
@@ -80,7 +80,7 @@ router.post("/login", (req, res) => {
           return res.status(401).json({ error: "Invalid password" });
         }
 
-        // req.session.userId = user.id;
+        req.session.userId = user.id;
 
         return res.status(200).json({
           user: {
@@ -98,9 +98,10 @@ router.post("/login", (req, res) => {
 });
 
 // Log a user out
-// router.post("/logout", (req, res) => {
-//   req.session = null;
-// });
+router.post("/logout", (req, res) => {
+  req.session.userId = null;
+  res.status(200).json("OKAY LOGOUT");
+});
 
 // router.get("/", (req, res) => {
 //   const email = req.session.userEmail;
