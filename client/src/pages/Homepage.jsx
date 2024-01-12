@@ -18,6 +18,7 @@ import Play from "./Play";
 
 import HowToPlayModal from "../components/HowToPlayModal";
 import ModalBackdrop from "../components/ModalBackdrop";
+import Leaderboard from "../components/Leaderboard";
 
 function Homepage() {
   const {user, logout} = useAuth();
@@ -89,6 +90,7 @@ function Homepage() {
           </div>
           <StatsCentreNav />
           <PlayerStats />
+          <Leaderboard user={user} />
 
         </>
       }
