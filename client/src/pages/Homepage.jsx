@@ -52,7 +52,6 @@ function Homepage() {
   }
 
   const openHowToPlayModal = () => {
-    setPage('home');
     setIsHowToPlayModalOpen(true);
   };
 
