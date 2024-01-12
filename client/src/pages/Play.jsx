@@ -14,6 +14,8 @@ function Play () {
   const [allFootballers, setAllFootballers] = useState([]);
   const [selectedFootballer, setSelectedFootballer] = useState(null);
   const [searchInput, setSearchInput] = useState("");
+  const [randomFootballer, setRandomFootballer] = useState(null);
+  const [isDataFetched, setIsDataFetched] = useState(false);
   
   const [win, setWin] = useState(null);
 
@@ -25,6 +27,12 @@ function Play () {
     setSearchInput(value);
   }
 
+  const chooseRandomPlayer = () => {
+    const randomIndex = Math.floor(Math.random() * allFootballers.length);
+    const randomPlayer = allFootballers[randomIndex];
+    setRandomFootballer(randomPlayer);
+  };
+
   useEffect(() => {
     axios
       .get("/api/footballers")
@@ -32,6 +40,7 @@ function Play () {
         const results = response.data;
         setFootballers(results);
         setAllFootballers(results);
+        setIsDataFetched(true);
       })
       .catch((error) => {
         console.error("Error fetching footballers:", error);
@@ -39,12 +48,17 @@ function Play () {
   }, []);
 
   useEffect(() => {
+    if (isDataFetched) {
+      chooseRandomPlayer();
+    }
+  }, [isDataFetched]);
+
+  useEffect(() => {
     const filteredResults = allFootballers.filter((player) =>
       player.name.toLowerCase().includes(searchInput.toLowerCase())
     );
     setFootballers(filteredResults);
   }, [searchInput, allFootballers]);
-
 
   function incrementCounter (guessCount) {
     if (guessCount < 6) {
