@@ -1,27 +1,45 @@
 .modal {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   max-width: 600px;
   width: 80%;
   padding: 20px;
-  background-color: #023047;
+  // background-color: #023047;
   border: 1px solid;
-  border-radius: 8px;
-
+  border-radius: 10px;
+  // color: white;
+  color: #023047;
   z-index: 101;
+  transition: all ease 0.5s;
 
-  .modal-content {
+  padding: 1.5rem;
+  box-shadow: 0 0 20px #eee;
+  background-image: linear-gradient(
+    to bottom,
+    #023047 0%,
+    #219ebc 51%,
+    #fff 100%
+  );
+}
+.modal-content {
+  display: flex;
+  flex-flow: column wrap;
+}
 
-    display: flex;
-    flex-flow: column wrap;
-
-  }
-
-  .modal-title {
-    color: #ffb703;
-    font-size: 1.5em;
+.modal-title {
+  color: #ffb703;
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+  margin-top: 0.5rem;
+}
+.close-button-icon {
+  color: #ffb703;
+  &:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+    transform: rotate(360deg);
   }
 }

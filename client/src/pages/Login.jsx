@@ -42,8 +42,9 @@ function Login(props) {
 
   return (
     <div className="login">
-      <h3 className="login__title">Login</h3>
+
       <form className="form" onSubmit={handleSubmit}>
+        <h3 className="form__title">Login</h3>
         {error && <p className="error">{error}</p>}
         <label className="form__label" htmlFor="email">
           Email address

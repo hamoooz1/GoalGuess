@@ -23,16 +23,6 @@
 }
 
 .btn {
-  // font-size: 1.7rem;
-  // padding: 10px 20px;
-  // margin-left: 9px;
-  // border-radius: 10px;
-  // align-items: center;
-  // background-color: #023047;
-  // color: #ffb703;
-  // &:hover {
-  //   box-shadow: 0 0 20px #eee;
-  // }
   background-image: linear-gradient(to right, #219ebc 0%, #023047 80%);
   margin: 10px;
   padding: 12px 20px;
@@ -49,4 +39,7 @@
     color: #fff;
     text-decoration: none;
   }
+}
+.btn_home {
+  font-size: 1.7rem;
 }
