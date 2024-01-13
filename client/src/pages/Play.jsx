@@ -1,5 +1,7 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import WinLossModal from "../components/WinLossModal";
+import WinLossBackdrop from "../components/WinLossBackdrop";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/play.scss";
@@ -9,12 +11,16 @@ function Play() {
 
   const [guessCount, setGuesserCounter] = useState(0);
   const [listOfGuesses, setListOfGuesses] = useState([]);
-
+  
   const [footballers, setFootballers] = useState([]);
   const [allFootballers, setAllFootballers] = useState([]);
   const [selectedFootballer, setSelectedFootballer] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-
+  
+  const [randomFootballer, setRandomFootballer] = useState(null);
+  const [isDataFetched, setIsDataFetched] = useState(false);
+  const [isWinLossModalOpen, setIsWinLossModalOpen] = useState(false);
+  
   const [win, setWin] = useState(null);
 
   /**
@@ -40,6 +46,26 @@ function Play() {
     setSearchInput(value);
   }
 
+  const chooseRandomPlayer = () => {
+    const randomIndex = Math.floor(Math.random() * allFootballers.length);
+    const randomPlayer = allFootballers[randomIndex];
+    setRandomFootballer(randomPlayer);
+  };
+
+  const openWinLossModal = () => {
+    setIsWinLossModalOpen(true);
+  };
+
+  const closeWinLossModal = () => {
+    setGuesserCounter(0);
+    setListOfGuesses([]);
+    setFootballers([]);
+    setSelectedFootballer(null);
+    setWin(null);
+    chooseRandomPlayer();
+    setIsWinLossModalOpen(false);
+  };
+
   useEffect(() => {
     axios
       .get("/api/footballers")
@@ -47,11 +73,18 @@ function Play() {
         const results = response.data;
         setFootballers(results);
         setAllFootballers(results);
+        setIsDataFetched(true);
       })
       .catch((error) => {
         console.error("Error fetching footballers:", error);
       });
   }, []);
+
+  useEffect(() => {
+    if (isDataFetched) {
+      chooseRandomPlayer();
+    }
+  }, [isDataFetched]);
 
   useEffect(() => {
     const filteredResults = allFootballers.filter((player) =>
@@ -60,6 +93,11 @@ function Play() {
     setFootballers(filteredResults);
   }, [searchInput, allFootballers]);
 
+  useEffect(() => {
+    if (win !== null) {
+      openWinLossModal();
+    }
+  }, [win]);
 
   function incrementCounter(guessCount) {
     if (guessCount < 6) {
@@ -71,6 +109,11 @@ function Play() {
   }
 
   //logic for comparing selected vs target
+  const targetPlayer = allFootballers[9]; //Random i
+
+  const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
+      let tempobj = {};
+
   const targetPlayer = allFootballers[9]; //Random i
 
   const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
@@ -107,7 +150,6 @@ function Play() {
           className="input-bar"
         />
       </div>
-
 
       <div className="grid-container">
         {listOfGuesses?.map((guess, rowIndex) => (
