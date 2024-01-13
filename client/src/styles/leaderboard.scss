@@ -1,3 +1,12 @@
+.leaderboard {
+  background-image: linear-gradient(
+    to bottom,
+    #023047 0%,
+    #219ebc 51%,
+    #fff 100%
+  );
+  color: #023047;
+}
 .leaderboard__table {
   border-collapse: collapse;
   width: 100%;
