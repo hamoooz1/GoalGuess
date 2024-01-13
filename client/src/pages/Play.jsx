@@ -8,7 +8,7 @@ import SearchBar
 function Play() {
 
   const [guessCount, setGuesserCounter] = useState(0);
-  const [listOfGuesses, setListOfGuesses] = useState([{}, {}, {}, {}, {}, {}]);
+  const [listOfGuesses, setListOfGuesses] = useState([]);
 
   const [footballers, setFootballers] = useState([]);
   const [allFootballers, setAllFootballers] = useState([]);
@@ -17,10 +17,20 @@ function Play() {
 
   const [win, setWin] = useState(null);
 
-  useEffect(() => {
-    setListOfGuesses(checkGuessArray);
-  }, [listOfGuesses])
+  /**
+   * Every time selectedFootballer changes, this code will run
+   * 1. Add an object to the listOfGuesses and the object
+   *    will have a key of the selectedPlayer's info with the value
+   *    being a boolean.
+   * 2. Check if they won 
+   */
 
+  useEffect(() => {
+    if (selectedFootballer) {
+      checkGuessAndUpdateList(targetPlayer, selectedFootballer);
+      console.log("theuse effect ran", listOfGuesses)
+    }
+  }, [selectedFootballer])
 
   const handleSelectFootballer = (player) => {
     setSelectedFootballer(player);
@@ -56,45 +66,31 @@ function Play() {
       setGuesserCounter(guessCount + 1)
     } else {
       setGuesserCounter(0)
+      setListOfGuesses([])
     }
   }
 
   //logic for comparing selected vs target
-  const targetPlayer = allFootballers[9]; //Random id
-  let checkGuessArray = [];
+  const targetPlayer = allFootballers[9]; //Random i
 
-
-  const checkGuess = function (targetPlayer, selectedFootballer) {
-    if (targetPlayer?.id !== selectedFootballer?.id) {
+  const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
       let tempobj = {};
-      for (const prop in targetPlayer) {
-       
-        //console.log(prop);
-        if (prop !== 'id' && prop !== 'league' && prop !== 'image') {
-          //checkGuessArray.push(targetPlayer[prop] == selectedFootballer[prop]);
-          //
-          console.log("here",prop);
 
-          tempobj[prop] = targetPlayer[prop] == selectedFootballer[prop];
+      for (const prop in targetPlayer) {
+        if (prop !== 'id' && prop !== 'league') {
+          tempobj[prop] = {
+            boolean: targetPlayer[prop] == selectedFootballer[prop],
+            selected: selectedFootballer[prop],
+          };
+          console.log("look at me yahoooo", tempobj)
         }
       }
-      checkGuessArray.push(tempobj)
-      return checkGuessArray;
 
-    } else {
-      return true;
-    }
+      setListOfGuesses((prev) => {
+        const newList = [...prev, tempobj];
+        return newList;
+      });
   };
-  checkGuess(targetPlayer, allFootballers[1])
-  checkGuess(targetPlayer, allFootballers[2])
-  checkGuess(targetPlayer, allFootballers[3])
-  checkGuess(targetPlayer, allFootballers[4])
-  checkGuess(targetPlayer, allFootballers[5])
-  checkGuess(targetPlayer, allFootballers[6])
-  console.log(checkGuessArray)
-
-
-
 
   return (
     <>
@@ -111,47 +107,24 @@ function Play() {
           className="input-bar"
         />
       </div>
-      
-    
+
 
       <div className="grid-container">
-        {checkGuessArray?.map((_, rowIndex) => (
-          <div key={rowIndex}>
-            {[...Array(6)].map((_, colIndex) => (
-              <div key={colIndex} className="grid-item">{colIndex},{rowIndex}</div>
-            ))}
+        {listOfGuesses?.map((guess, rowIndex) => (
+          <div className="grid-answers" key={rowIndex}>
+            {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
+              <>
+                <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
+                <div className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></div>
+                <div className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></div>
+                <div className={`grid-item ${guess.position.boolean ? 'true' : 'false'}`}>{guess.position.selected}</div>
+                <div className={`grid-item ${guess.age.boolean ? 'true' : 'false'}`}>{guess.age.selected}</div>
+                <div className={`grid-item ${guess.number.boolean ? 'true' : 'false'}`}>{guess.number.selected}</div>
+              </>
+            )}
           </div>
         ))}
       </div>
-
-      {/**
-              1. Set ListoFGuess in useeffect, populate it with checkGuessArray
-              2. Replace above Grid container code 
-
-               <div className="grid-container">
-                {listOfGuesses?.forEach((arrayItem, rowIndex) => (
-                  <div key={rowIndex}>
-                    <div className="grid-item">{arrayItem.id} {allPlayers[rowIndex].id}</div>
-                    <div className="grid-item">{arrayItem.name} {allPlayers[rowIndex].name}</div>
-                    <div className="grid-item">{arrayItem.position} {allPlayers[rowIndex].name}</div>
-                    <div className="grid-item">{arrayItem.league} {allPlayers[rowIndex].league}</div>
-                    <div className="grid-item">{arrayItem.team} {allPlayers[rowIndex].team}</div>
-                    <div className="grid-item">{arrayItem.age} {allPlayers[rowIndex].age}</div>
-                    
-                  </div>
-                ))}
-      </div>
-
-      <div className="grid-container">
-        {checkGuessArray?.map((_, rowIndex) => (
-          <div key={rowIndex}>
-            {[...Array(6)].map((_, colIndex) => (
-              <div key={colIndex} className="grid-item">{colIndex},{rowIndex}</div>
-            ))}
-          </div>
-        ))}
-      </div>
-            */}
     </>
 
   )
