@@ -59,7 +59,6 @@ function Play() {
   const closeWinLossModal = () => {
     setGuesserCounter(0);
     setListOfGuesses([]);
-    setFootballers([]);
     setSelectedFootballer(null);
     setWin(null);
     chooseRandomPlayer();
@@ -100,20 +99,15 @@ function Play() {
   }, [win]);
 
   function incrementCounter(guessCount) {
-    if (guessCount < 6) {
+    if (guessCount < 5) {
       setGuesserCounter(guessCount + 1)
     } else {
       setGuesserCounter(0)
-      setListOfGuesses([])
+      setWin(false);
     }
   }
 
   //logic for comparing selected vs target
-  const targetPlayer = allFootballers[9]; //Random i
-
-  const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
-      let tempobj = {};
-
   const targetPlayer = allFootballers[9]; //Random i
 
   const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
@@ -133,6 +127,11 @@ function Play() {
         const newList = [...prev, tempobj];
         return newList;
       });
+
+      if (targetPlayer.id == selectedFootballer.id) {
+        setWin(true)
+        
+      }
   };
 
   return (
@@ -167,6 +166,13 @@ function Play() {
           </div>
         ))}
       </div>
+      {isWinLossModalOpen && (
+        <>
+          <WinLossBackdrop onClick={closeWinLossModal} />
+          <WinLossModal closeModal={closeWinLossModal} win={win} />
+        </>
+      )}
+
     </>
 
   )
