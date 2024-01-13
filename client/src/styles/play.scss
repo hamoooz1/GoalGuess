@@ -11,6 +11,7 @@
 
 .grid-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 10px;
   margin-bottom: 7em;
@@ -25,8 +26,15 @@
   background-color: white;
   border: 3px solid black; 
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-right: 10px;
 }
+
+.grid-answers {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 
 .grid-item img{
   width: 4em;
