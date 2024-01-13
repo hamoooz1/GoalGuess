@@ -1,6 +1,10 @@
 import React from "react";
+
 import ModalBackdrop from './ModalBackdrop';
 import howToPlayCircle from "../howToPlayCircle.svg";
+
+
+
 import howToPlayCircleGreen from "../howToPlayCircleGreen.svg";
 import howToPlayCircleUp from "../howToPlayCircleUp.svg";
 import howToPlayCircleDown from "../howToPlayCircleDown.svg";

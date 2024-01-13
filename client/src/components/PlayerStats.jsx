@@ -3,6 +3,7 @@ import "../styles/playerstats.scss";
 
 export default function PlayerStats() {
 
+
   return (
     <div className="player-stats-container">
       <h1 className="stats-header">Player Stats</h1>
@@ -135,12 +136,12 @@ export default function PlayerStats() {
             <div className="goals-stats">
               <div className="player-box">
                 <h5>1</h5>
-                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t43.png" srcSet="https://resources.premierleague.com/premierleague/badges/25/t43@x2.png 2x" />
+                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t36.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t36@x2.png 2x" />
                 <div className="player-badge">
                   <h4>Lewis Dunk</h4>
                   <h5>Brighton</h5>
                 </div>
-                <h3>16</h3>
+                <h3>1657</h3>
               </div>
             </div>
             <div className="goals-stats">
