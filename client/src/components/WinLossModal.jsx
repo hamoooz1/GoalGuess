@@ -3,7 +3,7 @@ import closeSymbol from "../closeSymbol.svg";
 import '../styles/modals.scss';
 import "../styles/winLoss.scss";
 
-const WinLossModal = ({ isWinLossModalOpen, closeModal, win }) => {
+const WinLossModal = ({ isWinLossModalOpen, closeModal, win, randomFootballer }) => {
   return (
     <>
         <div className="win-loss modal">

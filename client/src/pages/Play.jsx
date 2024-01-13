@@ -29,10 +29,7 @@ function Play() {
   const [randomFootballer, setRandomFootballer] = useState(null);
   const [isDataFetched, setIsDataFetched] = useState(false);
 
-
-
   const [isWinLossModalOpen, setIsWinLossModalOpen] = useState(false);
-  
 
   const [win, setWin] = useState(null);
 
@@ -46,7 +43,7 @@ function Play() {
 
   useEffect(() => {
     if (selectedFootballer) {
-      checkGuessAndUpdateList(targetPlayer, selectedFootballer);
+      checkGuessAndUpdateList(randomFootballer, selectedFootballer);
       console.log("theuse effect ran", listOfGuesses)
     }
   }, [selectedFootballer])
@@ -66,16 +63,18 @@ function Play() {
   };
 
   const openWinLossModal = () => {
-    setIsWinLossModalOpen(true);
+    setTimeout(() => {
+      setIsWinLossModalOpen(true);
+    }, 900)
   };
 
   const closeWinLossModal = () => {
-    setGuesserCounter(0);
-    setListOfGuesses([]);
-    setSelectedFootballer(null);
-    setWin(null);
-    chooseRandomPlayer();
-    setIsWinLossModalOpen(false);
+      setGuesserCounter(0);
+      setListOfGuesses([]);
+      setSelectedFootballer(null);
+      setWin(null);
+      chooseRandomPlayer();
+      setIsWinLossModalOpen(false);
   };
 
   useEffect(() => {
@@ -116,14 +115,10 @@ function Play() {
     if (guessCount < 5) {
       setGuesserCounter(guessCount + 1)
     } else {
-      setGuesserCounter(0)
       setWin(false);
 
     }
   }
-
-  //logic for comparing selected vs target
-  const targetPlayer = allFootballers[9]; //Random i
 
   const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
       let tempobj = {};
@@ -134,7 +129,6 @@ function Play() {
             boolean: targetPlayer[prop] == selectedFootballer[prop],
             selected: selectedFootballer[prop],
           };
-          console.log("look at me yahoooo", tempobj)
         }
       }
 
@@ -148,6 +142,17 @@ function Play() {
         
       }
   };
+
+  const renderArrow = (number, guess) => { 
+    if (randomFootballer[number] > guess[number].selected) {
+      return <>↑</>;
+    } else if (randomFootballer[number] < guess[number].selected) {
+      return <>↓</>;
+    } else {
+      return null;
+    }
+  }
+
 
   return (
     <>
@@ -168,24 +173,29 @@ function Play() {
       <div className="grid-container">
 
         {listOfGuesses?.map((guess, rowIndex) => (
-          <div className="grid-answers" key={rowIndex}>
+            <div className="grid-answers" key={rowIndex}>
             {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
               <>
                 <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
                 <div className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></div>
                 <div className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></div>
                 <div className={`grid-item ${guess.position.boolean ? 'true' : 'false'}`}>{guess.position.selected}</div>
-                <div className={`grid-item ${guess.age.boolean ? 'true' : 'false'}`}>{guess.age.selected}</div>
-                <div className={`grid-item ${guess.number.boolean ? 'true' : 'false'}`}>{guess.number.selected}</div>
+                <div className={`grid-item ${guess.age.boolean ? 'true' : 'false'}`}>
+                  Age: {guess.age.selected} {renderArrow('age', guess)}
+                  </div>
+                <div className={`grid-item ${guess.number.boolean ? 'true' : 'false'}`}>
+                  Number: {guess.number.selected} {renderArrow('number', guess)}
+                  </div>
               </>
             )}
           </div>
         ))}
       </div>
+
       {isWinLossModalOpen && (
         <>
-          <WinLossBackdrop onClick={closeWinLossModal} />
-          <WinLossModal closeModal={closeWinLossModal} win={win} />
+          <WinLossBackdrop onClick={closeWinLossModal} randomFootballer={randomFootballer}/>
+          <WinLossModal closeModal={closeWinLossModal} win={win} randomFootballer={randomFootballer}/>
         </>
       )}
 
