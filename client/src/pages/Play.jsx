@@ -1,8 +1,12 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+
+
+
 import WinLossModal from "../components/WinLossModal";
 import WinLossBackdrop from "../components/WinLossBackdrop";
 import { useState, useEffect } from "react";
+
 import axios from "axios";
 import "../styles/play.scss";
 import SearchBar
@@ -10,8 +14,13 @@ import SearchBar
 function Play() {
 
   const [guessCount, setGuesserCounter] = useState(0);
+
+ 
+
+
   const [listOfGuesses, setListOfGuesses] = useState([]);
   
+
   const [footballers, setFootballers] = useState([]);
   const [allFootballers, setAllFootballers] = useState([]);
   const [selectedFootballer, setSelectedFootballer] = useState(null);
@@ -19,6 +28,7 @@ function Play() {
   
   const [randomFootballer, setRandomFootballer] = useState(null);
   const [isDataFetched, setIsDataFetched] = useState(false);
+
   const [isWinLossModalOpen, setIsWinLossModalOpen] = useState(false);
 
   const [win, setWin] = useState(null);
@@ -40,11 +50,11 @@ function Play() {
 
   const handleSelectFootballer = (player) => {
     setSelectedFootballer(player);
-  }
+  };
 
   const handleSearchInput = (value) => {
     setSearchInput(value);
-  }
+  };
 
   const chooseRandomPlayer = () => {
     const randomIndex = Math.floor(Math.random() * allFootballers.length);
@@ -94,6 +104,7 @@ function Play() {
     setFootballers(filteredResults);
   }, [searchInput, allFootballers]);
 
+
   useEffect(() => {
     if (win !== null) {
       openWinLossModal();
@@ -105,6 +116,7 @@ function Play() {
       setGuesserCounter(guessCount + 1)
     } else {
       setWin(false);
+
     }
   }
 
@@ -159,6 +171,7 @@ function Play() {
       </div>
 
       <div className="grid-container">
+
         {listOfGuesses?.map((guess, rowIndex) => (
             <div className="grid-answers" key={rowIndex}>
             {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
@@ -189,6 +202,7 @@ function Play() {
     </>
 
   )
+
 }
 
 export default Play;

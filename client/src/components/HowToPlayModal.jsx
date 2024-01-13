@@ -1,5 +1,10 @@
 import React from "react";
-import howToPlayCircle from "../howToPlayCircle.svg"
+
+import ModalBackdrop from './ModalBackdrop';
+import howToPlayCircle from "../howToPlayCircle.svg";
+
+
+
 import howToPlayCircleGreen from "../howToPlayCircleGreen.svg";
 import howToPlayCircleUp from "../howToPlayCircleUp.svg";
 import howToPlayCircleDown from "../howToPlayCircleDown.svg";
@@ -7,12 +12,12 @@ import '../styles/howToPlay.scss';
 import '../styles/modals.scss';
 import closeSymbol from "../closeSymbol.svg";
 
-const HowToPlayModal = ({ closeModal, isModalOpen }) => {
+const HowToPlayModal = ({closeHowToPlayModal}) => {
   return (
     <>
       <div className="how-to-play modal">
         <div className="modal-content">
-          <button className="how-to-play-modal__close-button" onClick={() => { closeModal(); }}>
+          <button className="close-button" onClick={closeHowToPlayModal}>
             <img src={closeSymbol} alt="close symbol" />
           </button>
           <div className="modal-text">
