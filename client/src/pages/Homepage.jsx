@@ -14,19 +14,26 @@ import PlayerStats from "../components/PlayerStats";
 import StatsCentreNav from "../components/StatsCentreNav";
 
 import {useAuth} from "../providers/AuthProvider";
+import {useModal} from "../providers/ModalProvider";
 import Play from "./Play";
 
 import HowToPlayModal from "../components/HowToPlayModal";
 import ModalBackdrop from "../components/ModalBackdrop";
-import Leaderboard from "../components/Leaderboard";
+import LeaderboardModal from "../components/LeaderboardModal";
 
 function Homepage() {
   const {user, logout} = useAuth();
 
-  // const [page, setPage] = useState(user ? 'home' : 'login');
+  const {isHowToPlayModalOpen,
+    isLeaderboardModalOpen,
+    openHowToPlayModal,
+    closeHowToPlayModal,
+    openLeaderboardModal,
+    closeLeaderboardModal} = useModal();
+
   const [page, setPage] = useState('home');
 
-  const [isHowToPlayModalOpen, setIsHowToPlayModalOpen] = useState(false);
+  // const [page, setPage] = useState(user ? 'home' : 'login');
   // const user = null;
   // const logout = null;
   function handleLogout(e) {
@@ -37,7 +44,7 @@ function Homepage() {
 
   function handleHome() {
     setPage('home');
-    setIsHowToPlayModalOpen(false);
+    // props.setIsHowToPlayModalOpen(false);
   }
 
   function handleLoginClick() {
@@ -51,14 +58,13 @@ function Homepage() {
   function handlePlay() {
     setPage('play');
   }
+  // const openHowToPlayModal = () => {
+  //   setIsHowToPlayModalOpen(true);
+  // };
 
-  const openHowToPlayModal = () => {
-    setIsHowToPlayModalOpen(true);
-  };
-
-  const closeHowToPlayModal = () => {
-    setIsHowToPlayModalOpen(false);
-  };
+  // const closeHowToPlayModal = () => {
+  //   setIsHowToPlayModalOpen(false);
+  // };
 
   return (
     <article className="homepage">
@@ -69,7 +75,15 @@ function Homepage() {
         handleLoginClick={handleLoginClick}
         handleSignupClick={handleSignupClick}
         handleHome={handleHome}
+
+        // openHowToPlayModal={props.openHowToPlayModal}
+        // isLeaderboardModalOpen={props.isLeaderboardModalOpen}
+        // openLeaderboardModal={props.openLeaderboardModal}
+        isHowToPlayModal={isHowToPlayModalOpen}
         openHowToPlayModal={openHowToPlayModal}
+        isLeaderboardModalOpen={isLeaderboardModalOpen}
+        openLeaderboardModal={openLeaderboardModal}
+
       />
 
       {page == "login" && <Login done={() => setPage('home')} handleSignupClick={handleSignupClick} />}
@@ -86,20 +100,25 @@ function Homepage() {
               isInView="true"
               handlePlay={handlePlay}
             />
-            <button onClick={() => handlePlay()} className="btn">PLAY</button>
+            <button onClick={() => handlePlay()} className="btn btn_home">PLAY</button>
           </div>
           <StatsCentreNav />
           <PlayerStats />
-          <Leaderboard user={user} />
-
         </>
       }
       <Footer />
 
       {isHowToPlayModalOpen && (
         <>
-          <HowToPlayModal closeModal={closeHowToPlayModal} />
-          <ModalBackdrop onClick={closeHowToPlayModal} />
+          <HowToPlayModal closeHowToPlayModal={closeHowToPlayModal} />
+          <ModalBackdrop closeHowToPlayModal={closeHowToPlayModal} />
+        </>
+      )}
+
+      {isLeaderboardModalOpen && (
+        <>
+          <LeaderboardModal closeLeaderboardModal={closeLeaderboardModal} />
+          <ModalBackdrop closeLeaderboardModal={closeLeaderboardModal} />
         </>
       )}
     </article>

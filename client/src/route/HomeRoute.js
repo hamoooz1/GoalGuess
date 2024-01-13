@@ -1,6 +1,6 @@
 import Homepage from "../pages/Homepage";
 
-function HomeRoute() {
+function HomeRoute(props) {
   return (
     <div>
       <Homepage />

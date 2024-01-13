@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { useAuth } from "../providers/AuthProvider";
+import {useAuth} from "../providers/AuthProvider";
 import "../styles/navBar.scss";
 import HowToPlayModal from "./HowToPlayModal";
 
 import goalGuessLogo from "../football_b.svg";
 
 function NavBar(props) {
-  const { user } = useAuth();
+  const {user} = useAuth();
   // function logout() {
   //   props.logout();
   //   props.done();
@@ -25,7 +25,7 @@ function NavBar(props) {
             </span>
           </li>
           <li className="menu__item">
-            <span className="item__link">
+            <span className="item__link" onClick={props.openLeaderboardModal}>
               Leaderboard
             </span>
           </li>

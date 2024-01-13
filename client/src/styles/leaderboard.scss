@@ -1,0 +1,20 @@
+.leaderboard__table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+th {
+  border-bottom: 1px solid #023047;
+  border-top: 1px solid #023047;
+  font-size: 1.2rem;
+  background-color: #8ecae6;
+  color: #023047;
+}
+.row_name,
+.head_name {
+  text-align: left;
+}
+.head,
+.row {
+  padding: 0.5rem;
+}

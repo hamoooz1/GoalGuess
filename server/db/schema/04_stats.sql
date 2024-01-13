@@ -6,4 +6,5 @@ CREATE TABLE stats (
   user_id INTEGER REFERENCES users(id) NOT NULL,
   win_count INTEGER DEFAULT 0,
   lose_count INTEGER DEFAULT 0,
+  total_games INTEGER DEFAULT 0
 );

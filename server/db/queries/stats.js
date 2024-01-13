@@ -1,9 +1,9 @@
 const db = require("../connection");
 
-const addUserStats = (user_id, win_count, lose_count) => {
-  const queryParams = [user_id, win_count, lose_count];
-  let queryString = `INSERT INTO stats(user_id, win_count, lose_count)
-  VALUES($1, $2, $3) RETURNING *;`;
+const addUserStats = (user_id, win_count, lose_count, total_games) => {
+  const queryParams = [user_id, win_count, lose_count, total_games];
+  let queryString = `INSERT INTO stats(user_id, win_count, lose_count, total_games)
+  VALUES($1, $2, $3, $4) RETURNING *;`;
 
   return db
     .query(queryString, queryParams)
@@ -14,13 +14,10 @@ const addUserStats = (user_id, win_count, lose_count) => {
       console.log(err.message);
     });
 };
-const countGamesByUser = (user_id) => {
+const sumGamesByUser = (user_id) => {
   return db
-    .query(
-      `SELECT SUM(win_count + lose_count) FROM stats WHERE stats.user_id = ${user_id};`
-    )
+    .query(`SELECT total_games FROM stats WHERE stats.user_id = ${user_id};`)
     .then((result) => {
-      console.log("result.rows", result);
       const totalGames = Number(result.rows[0].sum);
       return totalGames;
     })
@@ -32,7 +29,7 @@ const countGamesByUser = (user_id) => {
 const getStatsByAllUsers = () => {
   return db
     .query(
-      `SELECT stats.user_id, win_count, lose_count, SUM(win_count + lose_count) AS total_games FROM stats GROUP BY user_id, win_count, lose_count`
+      `SELECT users.full_name as name, SUM(stats.win_count) as win_count, SUM(stats.lose_count) as lose_count, SUM(stats.total_games) as total_games FROM stats INNER JOIN users ON users.id = stats.user_id GROUP BY stats.user_id, users.full_name ORDER BY total_games DESC;`
     )
     .then((data) => {
       return data.rows;
@@ -41,4 +38,4 @@ const getStatsByAllUsers = () => {
       console.log("error ", err.message);
     });
 };
-module.exports = { addUserStats, countGamesByUser, getStatsByAllUsers };
+module.exports = { addUserStats, sumGamesByUser, getStatsByAllUsers };

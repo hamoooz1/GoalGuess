@@ -45,8 +45,8 @@ function Signup(props) {
   };
   return (
     <div className="signUp">
-      <h3 className="signUp__title">Sign up</h3>
       <form className="form" onSubmit={handleSubmit}>
+        <h3 className="form__title">Sign up</h3>
         {error && <p className="error">{error}</p>}
 
         <label className="form__label" htmlFor="name">

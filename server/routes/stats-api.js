@@ -33,9 +33,9 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true })); // creates req.body
 
 router.post("/", (req, res) => {
-  const { user_id, win, lose } = req.body;
+  const { user_id, win, lose, totalGames } = req.body;
   statsQueries
-    .addUserStats(user_id, win, lose)
+    .addUserStats(user_id, win, lose, totalGames)
     .then((addedStats) => {
       console.log("addedStats", addedStats);
 
@@ -43,13 +43,12 @@ router.post("/", (req, res) => {
         return res.status(500).json({ error: "Error adding stats" });
       }
 
-      // Assuming countGamesByUser returns a Promise
-      return statsQueries.countGamesByUser(user_id);
-    })
-    .then((totalGames) => {
-      console.log("totalGames", totalGames);
+      //   return statsQueries.countGamesByUser(user_id);
+      // })
+      // .then((totalGames) => {
+      //   console.log("totalGames", totalGames);
 
-      res.status(201).json({
+      return res.status(201).json({
         stats: {
           user_id,
           win,
@@ -64,11 +63,11 @@ router.post("/", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
+router.get("/allUsers", (req, res) => {
   statsQueries
-    .getStats()
+    .getStatsByAllUsers()
     .then((stats) => {
-      res.json({ stats });
+      return res.status(200).json(stats);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
