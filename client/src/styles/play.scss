@@ -20,10 +20,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 85px;
+  width: 90px;
+  height: 95px;
   background-color: white;
-  border: 3px solid grey; 
+  border: 3px solid black; 
   box-sizing: border-box;
   margin-bottom: 10px;
+}
+
+.grid-item img{
+  width: 4em;
+  height: 4em;
+}
+
+.true {
+  background-color: green;
+}
+
+.false {
+  background-color: grey;
 }

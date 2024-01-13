@@ -10,17 +10,33 @@ import SearchBar
 function Play() {
 
   const [guessCount, setGuesserCounter] = useState(0);
-  const [listOfGuesses, setListOfGuesses] = useState([{}, {}, {}, {}, {}, {}]);
-
+  const [listOfGuesses, setListOfGuesses] = useState([]);
+  
   const [footballers, setFootballers] = useState([]);
   const [allFootballers, setAllFootballers] = useState([]);
   const [selectedFootballer, setSelectedFootballer] = useState(null);
   const [searchInput, setSearchInput] = useState("");
+  
   const [randomFootballer, setRandomFootballer] = useState(null);
   const [isDataFetched, setIsDataFetched] = useState(false);
   const [isWinLossModalOpen, setIsWinLossModalOpen] = useState(false);
-
+  
   const [win, setWin] = useState(null);
+
+  /**
+   * Every time selectedFootballer changes, this code will run
+   * 1. Add an object to the listOfGuesses and the object
+   *    will have a key of the selectedPlayer's info with the value
+   *    being a boolean.
+   * 2. Check if they won 
+   */
+
+  useEffect(() => {
+    if (selectedFootballer) {
+      checkGuessAndUpdateList(targetPlayer, selectedFootballer);
+      console.log("theuse effect ran", listOfGuesses)
+    }
+  }, [selectedFootballer])
 
   const handleSelectFootballer = (player) => {
     setSelectedFootballer(player);
@@ -88,26 +104,35 @@ function Play() {
       setGuesserCounter(guessCount + 1)
     } else {
       setGuesserCounter(0)
+      setListOfGuesses([])
     }
   }
 
   //logic for comparing selected vs target
-  const targetPlayer = allFootballers[2]; //Random id
+  const targetPlayer = allFootballers[9]; //Random i
 
-  const checkGuessArray = [];
+  const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
+      let tempobj = {};
 
-  const checkGuess = function (targetPlayer, selectedFootballer) {
-    if (targetPlayer.id !== selectedFootballer.id) {
+  const targetPlayer = allFootballers[9]; //Random i
+
+  const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
+      let tempobj = {};
+
       for (const prop in targetPlayer) {
-        if (prop !== 'id' && prop !== 'league' && prop !== 'image') {
-          checkGuessArray.push(targetPlayer[prop] == selectedFootballer[prop]);
+        if (prop !== 'id' && prop !== 'league') {
+          tempobj[prop] = {
+            boolean: targetPlayer[prop] == selectedFootballer[prop],
+            selected: selectedFootballer[prop],
+          };
+          console.log("look at me yahoooo", tempobj)
         }
       }
-      return checkGuessArray;
 
-    } else {
-      return true;
-    }
+      setListOfGuesses((prev) => {
+        const newList = [...prev, tempobj];
+        return newList;
+      });
   };
 
   return (
@@ -127,20 +152,21 @@ function Play() {
       </div>
 
       <div className="grid-container">
-        {listOfGuesses.map((_, rowIndex) => (
-          <div key={rowIndex}>
-            {[...Array(6)].map((_, colIndex) => (
-              <div key={colIndex} className="grid-item"></div>
-            ))}
+        {listOfGuesses?.map((guess, rowIndex) => (
+          <div className="grid-answers" key={rowIndex}>
+            {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
+              <>
+                <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
+                <div className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></div>
+                <div className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></div>
+                <div className={`grid-item ${guess.position.boolean ? 'true' : 'false'}`}>{guess.position.selected}</div>
+                <div className={`grid-item ${guess.age.boolean ? 'true' : 'false'}`}>{guess.age.selected}</div>
+                <div className={`grid-item ${guess.number.boolean ? 'true' : 'false'}`}>{guess.number.selected}</div>
+              </>
+            )}
           </div>
         ))}
       </div>
-      {isWinLossModalOpen && (
-        <>
-          <WinLossBackdrop onClick={closeWinLossModal} />
-          <WinLossModal closeModal={closeWinLossModal} win={win} />
-        </>
-      )}
     </>
 
   )
