@@ -42,10 +42,9 @@ function Play() {
 
   const closeWinLossModal = () => {
     setGuesserCounter(0);
-    setListOfGuesses([{}, {}, {}, {}, {}, {}]);
-    setFootballers(allFootballers);
+    setListOfGuesses([]);
+    setFootballers([]);
     setSelectedFootballer(null);
-    setSearchInput("");
     setWin(null);
     chooseRandomPlayer();
     setIsWinLossModalOpen(false);
