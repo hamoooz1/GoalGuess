@@ -9,21 +9,15 @@
   }
 }
 
-.modal-text {
-  padding-left: 10px;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: flex-start;
-  color: #ffffff;
-}
-
 .modal-circles {
   display: flex;
   flex-direction: row;
   align-items: space-between;
+  margin: 5px;
 
   .circle {
     padding-right: 5px;
+    margin: 0px 5px 2px 0px;
     padding-top: 5px;
     padding-bottom: 5px;
   }
@@ -42,6 +36,10 @@
   -moz-user-select: none;
   user-select: none;
   cursor: pointer;
+}
+
+.modal-instructions {
+  margin-top: 10px;
 }
 
 h3 {

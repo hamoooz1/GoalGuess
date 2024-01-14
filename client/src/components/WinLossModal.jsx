@@ -4,6 +4,10 @@ import '../styles/modals.scss';
 import "../styles/winLoss.scss";
 
 const WinLossModal = ({ isWinLossModalOpen, closeModal, win, randomFootballer }) => {
+
+
+  console.log("this is the random footballer", randomFootballer)
+
   return (
     <>
         <div className="win-loss modal">
@@ -11,11 +15,13 @@ const WinLossModal = ({ isWinLossModalOpen, closeModal, win, randomFootballer })
             <button className="win-loss-modal__close-button" onClick={closeModal}>
               <img src={closeSymbol} alt="close symbol" />
             </button>
-            <div className="modal-text">
+            <div className="answer-modal-box">
               <h1 className="modal-title">
                 {win ? "Great job, you got it!" : "Better luck next time!"}
               </h1>
-            </div>
+                <h1>{randomFootballer.name}</h1>
+                <img src={randomFootballer.image} />
+              </div>
             <p>
               Close this window to play again!
             </p>

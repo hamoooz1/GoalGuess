@@ -179,12 +179,18 @@ function Play() {
                 <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
                 <div className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></div>
                 <div className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></div>
-                <div className={`grid-item ${guess.position.boolean ? 'true' : 'false'}`}>{guess.position.selected}</div>
-                <div className={`grid-item ${guess.age.boolean ? 'true' : 'false'}`}>
-                  Age: {guess.age.selected} {renderArrow('age', guess)}
+                <div className={`grid-item arrow-head ${guess.position.boolean ? 'true' : 'false'}`}>
+                 {guess.position.selected === 'Midfielder' ? 'MID' :
+                  guess.position.selected === 'Forward' ? 'FWD' :
+                  guess.position.selected === 'Defender' ? 'DEF' :
+                  guess.position.selected === 'Goalkeeper' ? 'GK' :
+                  guess.position.selected}
+                </div>
+                <div className={`grid-item age ${guess.age.boolean ? 'true' : 'false'}`}>
+                  <div>Age:</div> <div className="arrow-head">{guess.age.selected} {renderArrow('age', guess)}</div>
                   </div>
-                <div className={`grid-item ${guess.number.boolean ? 'true' : 'false'}`}>
-                  Number: {guess.number.selected} {renderArrow('number', guess)}
+                <div className={`grid-item age ${guess.number.boolean ? 'true' : 'false'}`}>
+                  <div>Number:</div> <div className="arrow-head">{guess.number.selected} {renderArrow('number', guess)}</div>
                   </div>
               </>
             )}
@@ -194,7 +200,7 @@ function Play() {
 
       {isWinLossModalOpen && (
         <>
-          <WinLossBackdrop onClick={closeWinLossModal} randomFootballer={randomFootballer}/>
+          <WinLossBackdrop onClick={closeWinLossModal}/>
           <WinLossModal closeModal={closeWinLossModal} win={win} randomFootballer={randomFootballer}/>
         </>
       )}
