@@ -4,6 +4,10 @@ import '../styles/modals.scss';
 import "../styles/winLoss.scss";
 
 const WinLossModal = ({ isWinLossModalOpen, closeModal, win, randomFootballer }) => {
+
+
+  console.log("this is the random footballer", randomFootballer)
+
   return (
     <>
       <div className="win-loss modal">
