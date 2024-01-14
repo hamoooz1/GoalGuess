@@ -8,44 +8,31 @@ import HowToPlayModal from "./components/HowToPlayModal";
 import LeaderboardModal from "./components/LeaderboardModal";
 
 function App() {
-  const [isHowToPlayModalOpen, setIsHowToPlayModalOpen] = useState(false);
+  // const [isLeaderboardModalOpen, setIsLeaderboardModalOpen] = useState(false);
 
-  const [isLeaderboardModalOpen, setIsLeaderboardModalOpen] = useState(false);
+  // const openHowToPlayModal = () => {
+  //   setIsHowToPlayModalOpen(true);
+  // };
 
-  const openHowToPlayModal = () => {
-    setIsHowToPlayModalOpen(true);
-  };
+  // const closeHowToPlayModal = () => {
+  //   setIsHowToPlayModalOpen(false);
+  // };
 
-  const closeHowToPlayModal = () => {
-    setIsHowToPlayModalOpen(false);
-  };
+  // const openLeaderboardModal = () => {
+  //   console.log("leaderboard opened");
+  //   setIsLeaderboardModalOpen(true);
+  // };
 
-  const openLeaderboardModal = () => {
-    console.log("leaderboard opened");
-    setIsLeaderboardModalOpen(true);
-  };
-
-  const closeLeaderboardModal = () => {
-    console.log("leaderboard closed");
-    setIsLeaderboardModalOpen(false);
-  };
+  // const closeLeaderboardModal = () => {
+  //   console.log("leaderboard closed");
+  //   setIsLeaderboardModalOpen(false);
+  // };
 
   return (
     <div className="App">
       <AuthProvider>
         <ModalProvider>
-          <HomeRoute
-            openHowToPlayModal={openHowToPlayModal}
-            openLeaderboardModal={openLeaderboardModal}
-            closeLeaderboardModal={closeLeaderboardModal}
-            isLeaderboardModalOpen={isLeaderboardModalOpen}
-          />
-          {isHowToPlayModalOpen && (
-            <>
-              <ModalBackdrop onClick={closeHowToPlayModal} />
-              <HowToPlayModal closeModal={closeHowToPlayModal} />
-            </>
-          )}
+          <HomeRoute />
         </ModalProvider>
       </AuthProvider>
     </div>

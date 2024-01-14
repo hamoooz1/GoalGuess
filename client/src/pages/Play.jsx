@@ -5,33 +5,38 @@ import Footer from "../components/Footer";
 
 import WinLossModal from "../components/WinLossModal";
 import WinLossBackdrop from "../components/WinLossBackdrop";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
+import {useModal} from "../providers/ModalProvider";
 
 import axios from "axios";
 import "../styles/play.scss";
 import SearchBar
   from "../components/SearchBar";
-function Play() {
+function Play(props) {
+  const {win, lose,
+    handleWin,
+    handleLose,
+    clearWinLoseState, } = useModal();
 
   const [guessCount, setGuesserCounter] = useState(0);
 
- 
+
 
 
   const [listOfGuesses, setListOfGuesses] = useState([]);
-  
+
 
   const [footballers, setFootballers] = useState([]);
   const [allFootballers, setAllFootballers] = useState([]);
   const [selectedFootballer, setSelectedFootballer] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  
+
   const [randomFootballer, setRandomFootballer] = useState(null);
   const [isDataFetched, setIsDataFetched] = useState(false);
 
   const [isWinLossModalOpen, setIsWinLossModalOpen] = useState(false);
 
-  const [win, setWin] = useState(null);
+  // const [win, setWin] = useState(null);
 
   /**
    * Every time selectedFootballer changes, this code will run
@@ -44,9 +49,10 @@ function Play() {
   useEffect(() => {
     if (selectedFootballer) {
       checkGuessAndUpdateList(randomFootballer, selectedFootballer);
-      console.log("theuse effect ran", listOfGuesses)
+      console.log("theuse effect ran", listOfGuesses);
+      checkGameResult(guessCount, randomFootballer, selectedFootballer);
     }
-  }, [selectedFootballer])
+  }, [selectedFootballer]);
 
   const handleSelectFootballer = (player) => {
     setSelectedFootballer(player);
@@ -65,16 +71,16 @@ function Play() {
   const openWinLossModal = () => {
     setTimeout(() => {
       setIsWinLossModalOpen(true);
-    }, 900)
+    }, 900);
   };
 
   const closeWinLossModal = () => {
-      setGuesserCounter(0);
-      setListOfGuesses([]);
-      setSelectedFootballer(null);
-      setWin(null);
-      chooseRandomPlayer();
-      setIsWinLossModalOpen(false);
+    setGuesserCounter(0);
+    setListOfGuesses([]);
+    setSelectedFootballer(null);
+    clearWinLoseState();
+    chooseRandomPlayer();
+    setIsWinLossModalOpen(false);
   };
 
   useEffect(() => {
@@ -106,44 +112,51 @@ function Play() {
 
 
   useEffect(() => {
-    if (win !== null) {
+    if (win !== 0 || lose !== 0) {
       openWinLossModal();
     }
-  }, [win]);
+  }, [win, lose]);
 
   function incrementCounter(guessCount) {
-    if (guessCount < 5) {
-      setGuesserCounter(guessCount + 1)
-    } else {
-      setWin(false);
-
+    if (guessCount < 6) {
+      setGuesserCounter(guessCount + 1);
     }
   }
 
-  const checkGuessAndUpdateList = function (targetPlayer, selectedFootballer) {
-      let tempobj = {};
+  const checkGuessAndUpdateList = function(targetPlayer, selectedFootballer) {
+    let tempobj = {};
 
-      for (const prop in targetPlayer) {
-        if (prop !== 'id' && prop !== 'league') {
-          tempobj[prop] = {
-            boolean: targetPlayer[prop] == selectedFootballer[prop],
-            selected: selectedFootballer[prop],
-          };
-        }
+    for (const prop in targetPlayer) {
+      if (prop !== 'id' && prop !== 'league') {
+        tempobj[prop] = {
+          boolean: targetPlayer[prop] == selectedFootballer[prop],
+          selected: selectedFootballer[prop],
+        };
       }
+    }
 
-      setListOfGuesses((prev) => {
-        const newList = [...prev, tempobj];
-        return newList;
-      });
+    setListOfGuesses((prev) => {
+      const newList = [...prev, tempobj];
+      return newList;
+    });
 
-      if (targetPlayer.id == selectedFootballer.id) {
-        setWin(true)
-        
-      }
   };
 
-  const renderArrow = (number, guess) => { 
+
+  const checkGameResult = (guessCount, targetPlayer, selectedFootballer) => {
+    if (guessCount < 6) {
+
+      if (targetPlayer.id == selectedFootballer.id) {
+        handleWin();
+        return;
+      }
+    }
+    if (guessCount == 6) {
+      handleLose();
+      return;
+    };
+  };
+  const renderArrow = (number, guess) => {
     if (randomFootballer[number] > guess[number].selected) {
       return <>↑</>;
     } else if (randomFootballer[number] < guess[number].selected) {
@@ -151,7 +164,7 @@ function Play() {
     } else {
       return null;
     }
-  }
+  };
 
 
   return (
@@ -173,7 +186,7 @@ function Play() {
       <div className="grid-container">
 
         {listOfGuesses?.map((guess, rowIndex) => (
-            <div className="grid-answers" key={rowIndex}>
+          <div className="grid-answers" key={rowIndex}>
             {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
               <>
                 <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
@@ -182,10 +195,10 @@ function Play() {
                 <div className={`grid-item ${guess.position.boolean ? 'true' : 'false'}`}>{guess.position.selected}</div>
                 <div className={`grid-item ${guess.age.boolean ? 'true' : 'false'}`}>
                   Age: {guess.age.selected} {renderArrow('age', guess)}
-                  </div>
+                </div>
                 <div className={`grid-item ${guess.number.boolean ? 'true' : 'false'}`}>
                   Number: {guess.number.selected} {renderArrow('number', guess)}
-                  </div>
+                </div>
               </>
             )}
           </div>
@@ -194,14 +207,14 @@ function Play() {
 
       {isWinLossModalOpen && (
         <>
-          <WinLossBackdrop onClick={closeWinLossModal} randomFootballer={randomFootballer}/>
-          <WinLossModal closeModal={closeWinLossModal} win={win} randomFootballer={randomFootballer}/>
+          <WinLossBackdrop onClick={closeWinLossModal} randomFootballer={randomFootballer} />
+          <WinLossModal closeModal={closeWinLossModal} win={win} lose={lose} randomFootballer={randomFootballer} />
         </>
       )}
 
     </>
 
-  )
+  );
 
 }
 

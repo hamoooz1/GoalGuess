@@ -58,13 +58,6 @@ function Homepage() {
   function handlePlay() {
     setPage('play');
   }
-  // const openHowToPlayModal = () => {
-  //   setIsHowToPlayModalOpen(true);
-  // };
-
-  // const closeHowToPlayModal = () => {
-  //   setIsHowToPlayModalOpen(false);
-  // };
 
   return (
     <article className="homepage">
@@ -76,9 +69,6 @@ function Homepage() {
         handleSignupClick={handleSignupClick}
         handleHome={handleHome}
 
-        // openHowToPlayModal={props.openHowToPlayModal}
-        // isLeaderboardModalOpen={props.isLeaderboardModalOpen}
-        // openLeaderboardModal={props.openLeaderboardModal}
         isHowToPlayModal={isHowToPlayModalOpen}
         openHowToPlayModal={openHowToPlayModal}
         isLeaderboardModalOpen={isLeaderboardModalOpen}
