@@ -32,10 +32,18 @@ const HowToPlayModal = ({closeHowToPlayModal}) => {
                 <img className="circle two" src={howToPlayCircleGreen} />
                 <img className="circle three" src={howToPlayCircle} />
                 <img className="circle four" src={howToPlayCircleGreen} />
+                <img className="circle five" src={howToPlayCircleUp} />
+                <img className="circle six" src={howToPlayCircleDown} />
+              </div>
+              <li>The first three boxes turn green if you've guessed the player's Nationality, Team, or Position</li>
+              <div className="modal-circles">
+                <img className="circle two" src={howToPlayCircleGreen} />
+                <img className="circle three" src={howToPlayCircle} />
+                <img className="circle four" src={howToPlayCircleGreen} />
                 <img className="circle five" src={howToPlayBlank} />
                 <img className="circle six" src={howToPlayBlank} />
               </div>
-              <li>The first three boxes turn green if you've guessed the player's Nationality, Team, or Position</li>
+              <li>The last two boxes will tell you if the player's age and number are higher or lower than your guess</li>
               <div className="modal-circles">
                 <img className="circle two" src={howToPlayBlank} />
                 <img className="circle three" src={howToPlayBlank} />
@@ -43,7 +51,6 @@ const HowToPlayModal = ({closeHowToPlayModal}) => {
                 <img className="circle five" src={howToPlayCircleUp} />
                 <img className="circle six" src={howToPlayCircleDown} />
               </div>
-              <li>The last two boxes will tell you if the player's age and number are higher or lower than your guess</li>
             </ul>
           </div>
         </div>

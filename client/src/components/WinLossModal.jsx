@@ -29,8 +29,17 @@ const WinLossModal = ({ isWinLossModalOpen, closeModal, win, randomFootballer })
                 <h3>
                   Better luck next time
                 </h3>
+                <p>
+                  The mystery player was:
+                </p>
               </>
             }
+          </div>
+          <div className="random-footballer">
+            <img src={randomFootballer.image} />
+            <h2>
+              {randomFootballer.name}
+            </h2>
           </div>
           <p>
             Close this window to play again
