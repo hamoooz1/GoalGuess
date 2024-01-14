@@ -1,19 +1,36 @@
-.win-loss-modal__close-button {
-  background: none;
-  border: none;
-  padding: 0;
-  width: 27px;
-  height: 27px;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  cursor: pointer;
-}
+.win-loss {
+  .win-loss-modal__close-button {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
 
-.modal-content {
-  display: flex;
-  justify-content: center;
+  .random-footballer {
+    margin-top: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    color: #ffb703;
+    margin-top: -5px;
+  }
+  h3 {
+    margin-top: -20px;
+  }
+
+  p {
+    margin-top: 40px;
+  }
 }

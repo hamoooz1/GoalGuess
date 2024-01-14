@@ -5,7 +5,7 @@
       height="30"
       fill="#ffffff"
     >
-      <circle cx="10" cy="10" r="10" />
+      <rect x="0" y="0" width="20" height="20" />
       <path
         fill="#000000"
         d="M10 13.3333L14.6667 8.6667H12.3333V4H8.6667V8.6667H6.3333L10 13.3333Z"

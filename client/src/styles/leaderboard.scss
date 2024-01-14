@@ -27,3 +27,18 @@ th {
 .row {
   padding: 0.5rem;
 }
+
+.close-button {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}

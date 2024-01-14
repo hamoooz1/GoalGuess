@@ -5,5 +5,5 @@
       height="30"
       fill="green"
     >
-      <circle cx="10" cy="10" r="10" />
+      <rect x="0" y="0" width="20" height="20" />
 </svg>
