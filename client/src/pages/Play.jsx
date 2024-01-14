@@ -13,10 +13,16 @@ import "../styles/play.scss";
 import SearchBar
   from "../components/SearchBar";
 function Play(props) {
-  const {win, lose,
-    handleWin,
-    handleLose,
-    clearWinLoseState, } = useModal();
+
+
+  const {user} = useAuth();
+
+  const user_id = user?.id;
+
+  // const {win, lose,
+  //   handleWin,
+  //   handleLose,
+  //   clearWinLoseState, } = useModal();
 
   const [guessCount, setGuesserCounter] = useState(0);
 
@@ -36,7 +42,7 @@ function Play(props) {
 
   const [isWinLossModalOpen, setIsWinLossModalOpen] = useState(false);
 
-  // const [win, setWin] = useState(null);
+  const [win, setWin] = useState(null);
 
   /**
    * Every time selectedFootballer changes, this code will run
@@ -111,15 +117,43 @@ function Play(props) {
   }, [searchInput, allFootballers]);
 
 
+  // useEffect(() => {
+  //   if (win !== 0 || lose !== 0) {
+  //     openWinLossModal();
+  //   }
+  // }, [win, lose]);
+
+
+
   useEffect(() => {
-    if (win !== 0 || lose !== 0) {
+    if (win !== null) {
       openWinLossModal();
+      let win_count = 0;
+      let lose_count = 0;
+
+      if (win) {
+        win_count = 1;
+      } else {
+        lose_count = 1;
+      }
+      axios
+        .post("/api/stats", {user_id, win_count, lose_count, totalGames})
+        .then((res) => {
+          return res.data;
+        })
+        .catch((error) => {
+          console.error("Error adding stats:", error);
+        });
+
     }
-  }, [win, lose]);
+  }, [win]);
 
   function incrementCounter(guessCount) {
-    if (guessCount < 6) {
+    if (guessCount < 5) {
       setGuesserCounter(guessCount + 1);
+    } else {
+      setWin(false);
+
     }
   }
 
@@ -143,19 +177,19 @@ function Play(props) {
   };
 
 
-  const checkGameResult = (guessCount, targetPlayer, selectedFootballer) => {
-    if (guessCount < 6) {
+  // const checkGameResult = (guessCount, targetPlayer, selectedFootballer) => {
+  //   if (guessCount < 6) {
 
-      if (targetPlayer.id == selectedFootballer.id) {
-        handleWin();
-        return;
-      }
-    }
-    if (guessCount == 6) {
-      handleLose();
-      return;
-    };
-  };
+  //     if (targetPlayer.id == selectedFootballer.id) {
+  //       handleWin();
+  //       return;
+  //     }
+  //   }
+  //   if (guessCount == 6) {
+  //     handleLose();
+  //     return;
+  //   };
+  // };
   const renderArrow = (number, guess) => {
     if (randomFootballer[number] > guess[number].selected) {
       return <>↑</>;
@@ -219,3 +253,29 @@ function Play(props) {
 }
 
 export default Play;
+
+
+
+
+useEffect(() => {
+  if (win !== null) {
+    openWinLossModal();
+    let win_count = 0;
+    let lose_count = 0;
+
+    if (win) {
+      win_count = 1;
+    } else {
+      lose_count = 1;
+    }
+    axios
+      .post("/api/stats", {user_id, win_count, lose_count, totalGames})
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        console.error("Error adding stats:", error);
+      });
+
+  }
+}, [win]);

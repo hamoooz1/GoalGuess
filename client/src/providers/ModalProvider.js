@@ -6,10 +6,14 @@ const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
   const { user } = useAuth();
-  const [win, setWin] = useState(0);
-  const [lose, setLose] = useState(0);
+  const [win, setWin] = useState(null);
+  // const [lose, setLose] = useState(0);
+  // const lose = null;
+
+  //
 
   const user_id = user?.id;
+
   const handleWin = () => {
     setWin(1);
   };
@@ -23,20 +27,41 @@ export const ModalProvider = ({ children }) => {
   };
   const totalGames = win + lose;
 
-  useEffect(() => {
-    // console.log("Payload:", {user_id, win, lose});
-    if (!user) {
-      return;
-    }
-    axios
-      .post("/api/stats", { user_id, win, lose, totalGames })
-      .then((res) => {
-        return res.data;
-      })
-      .catch((error) => {
-        console.error("Error adding stats:", error);
-      });
-  }, [win, lose]);
+  // useEffect(() => {
+  //   // console.log("Payload:", {user_id, win, lose});
+  //   if (!user) {
+  //     return;
+  //   }
+  //   if(win) {
+  //     if (win !== null) {
+  //     const win_count = 1;
+  //     const lose_count = 0;
+  //     const totalGames = win_count + lose_count;
+
+  //     axios
+  //       .post("/api/stats", { user_id, win, lose, totalGames })
+  //       .then((res) => {
+  //         return res.data;
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error adding stats:", error);
+  //       });
+  //   }}, [win]);
+
+  //   if (win !== null) {
+  //   // const win_count = 0;
+  //   // const lose_count = 1;
+  //   // const totalGames = win_count + lose_count;
+
+  //   axios
+  //     .post("/api/stats", { user_id, win, lose, totalGames })
+  //     .then((res) => {
+  //       return res.data;
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding stats:", error);
+  //     });
+  // }}, [win]);
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
