@@ -35,10 +35,19 @@
   flex-direction: row;
 }
 
+.age {
+  display: flex;
+  flex-direction: column;
+}
 
 .grid-item img{
   width: 4em;
   height: 4em;
+}
+
+.arrow-head {
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .true {
@@ -46,5 +55,6 @@
 }
 
 .false {
-  background-color: grey;
+  // background-color: grey;
+  background-color: rgb(148, 163, 184);
 }

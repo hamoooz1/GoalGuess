@@ -39,7 +39,7 @@ function Footer() {
           <div className="about-us">
             <h4>Follow Us</h4>
             <ul className="follow-us">
-              <li className="socials-logos"><FaGithub /></li>
+              <li className="socials-logos"><a style={{ color: 'white' }} href="https://github.com/hamoooz1/GoalGuess" target="_blank" rel="noopener noreferrer"><FaGithub /></a></li>
               <li className="socials-logos"><FaLinkedin /></li>
               <li className="socials-logos"><FaInstagram /></li>
             </ul>
