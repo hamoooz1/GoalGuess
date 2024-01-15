@@ -53,11 +53,15 @@ router.post("/signUp", (req, res) => {
       if (!addedUser) {
         return res.status(500).json({ error: "Error creating user" });
       }
-      // req.session.userId = addedUser.id;
+      req.session.userId = addedUser.id;
       // res.status(201).json({ message: "User created successfully" });
-      res
-        .status(201)
-        .json({ user: { name: name, email: email, password: password } });
+      res.status(201).json({
+        user: {
+          name: addedUser[0].full_name,
+          email: addedUser[0].email,
+          id: addedUser[0].id,
+        },
+      });
     })
     .catch((err) => {
       res.status(500).json({ error: "Internal server error" });
@@ -80,7 +84,7 @@ router.post("/login", (req, res) => {
           return res.status(401).json({ error: "Invalid password" });
         }
 
-        // req.session.userId = user.id;
+        req.session.userId = user.id;
 
         return res.status(200).json({
           user: {
@@ -92,14 +96,71 @@ router.post("/login", (req, res) => {
       });
     })
     .catch((error) => {
-      console.error("Login error:", error);
       res.status(500).json({ error: "Internal server error" });
     });
 });
 
 // Log a user out
-// router.post("/logout", (req, res) => {
-//   req.session = null;
+router.post("/logout", (req, res) => {
+  // console.log("before", req.session.userId);
+  req.session.userId = null;
+  // console.log(req.session.userId);
+
+  res.status(200).json({ message: "Logout successful" });
+});
+
+// router.get("/login", (req, res) => {
+//   const id = req.session.userId;
+
+//   if (!id) {
+//     return res.status(401).json({ error: "Invalid session ID" });
+//   }
+
+//   userQueries
+//     .getUserById(id)
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(401).json({ error: "User not found" });
+//       }
+//       return res.status(200).json({
+//         user: {
+//           name: user.full_name,
+//           email: user.email,
+//           id: user.id,
+//         },
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error getting user by ID:", error);
+//       return res.status(500).json({ error: "Internal server error" });
+//     });
+// });
+
+// app.get("/signUp", (req, res) => {
+//   const id = req.session.userId;
+
+//   if (!id) {
+//     return res.status(401).json({ error: "Invalid session ID" });
+//   }
+
+//   userQueries
+//     .getUserById(id)
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(401).json({ error: "User not found" });
+//       }
+//       return res.status(200).json({
+//         user: {
+//           name: user.full_name,
+//           email: user.email,
+//           id: user.id,
+//         },
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error getting user by ID:", error);
+//       return res.status(500).json({ error: "Internal server error" });
+//     });
 // });
 
 // router.get("/", (req, res) => {

@@ -8,24 +8,7 @@ const LeaderboardModal = (props) => {
 
   const [allUsersStats, setAllUsersStats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const win = 1;
-  const lose = 1;
-  const totalGames = win + lose;
-  const user_id = 4;
 
-  // // POST REQUEST TO DB STATS;
-  useEffect(() => {
-    // console.log("Payload:", {user_id, win, lose});
-    axios
-      .post("/api/stats", {user_id, win, lose, totalGames})
-      .then((res) => {
-        return res.data;
-
-      })
-      .catch((error) => {
-        console.error("Error adding stats:", error);
-      });
-  }, [win, lose]);
 
 
   // GET stats by all users

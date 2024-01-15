@@ -33,9 +33,9 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true })); // creates req.body
 
 router.post("/", (req, res) => {
-  const { user_id, win, lose, totalGames } = req.body;
+  const { user_id, win_count, lose_count, totalGames } = req.body;
   statsQueries
-    .addUserStats(user_id, win, lose, totalGames)
+    .addUserStats(user_id, win_count, lose_count, totalGames)
     .then((addedStats) => {
       console.log("addedStats", addedStats);
 
@@ -51,8 +51,8 @@ router.post("/", (req, res) => {
       return res.status(201).json({
         stats: {
           user_id,
-          win,
-          lose,
+          win_count,
+          lose_count,
           totalGames,
         },
       });
