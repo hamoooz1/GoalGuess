@@ -51,7 +51,6 @@ const HowToPlayModal = ({closeHowToPlayModal}) => {
                 <img className="circle five" src={howToPlayCircleUp} />
                 <img className="circle six" src={howToPlayCircleDown} />
               </div>
-              <li className="modal-instructions">The last two boxes indicate whether the mystery player's age and number are higher or lower than that of the player you guessed</li>
             </ul>
           </div>
         </div>

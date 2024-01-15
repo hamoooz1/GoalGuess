@@ -42,8 +42,8 @@ function App() {
           />
           {isHowToPlayModalOpen && (
             <>
-              <ModalBackdrop onClick={closeHowToPlayModal} />
-              <HowToPlayModal closeModal={closeHowToPlayModal} />
+              <ModalBackdrop closeHowToPlayModal={closeHowToPlayModal} />
+              <HowToPlayModal closeHowToPlayModal={closeHowToPlayModal} />
             </>
           )}
         </ModalProvider>
