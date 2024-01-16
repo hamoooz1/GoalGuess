@@ -25,8 +25,10 @@ const HowToPlayModal = ({closeHowToPlayModal}) => {
             <h3>
               Guess the player within 6 attempts
             </h3>
+            <h4>When the game starts, we'll randomly select a mystery player</h4>
             <ul className="modal-list">
-              <li>Use the search bar to guess a player</li>
+              
+              <li>Use the search bar to make a guess</li>
               <li>After each guess, you'll get some feedback:</li>
               <div className="modal-circles">
                 <img className="circle two" src={howToPlayCircleGreen} />
