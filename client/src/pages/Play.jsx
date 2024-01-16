@@ -196,10 +196,10 @@ function Play() {
 
   useEffect(() => {
     setIsVisible(true);
-  }, [goalGuess]);
+  }, [guessCount]);
 
   const GridAnswerItem = ({className, content, isVisible}) => (
-    <CSSTransition classNames="grid-item" timeout={5000} in={isVisible} appear>
+    <CSSTransition classNames="grid-item" timeout={500} in={isVisible} appear>
       <div className={`grid-item ${className}`}>
         {content}
       </div>
@@ -230,7 +230,7 @@ function Play() {
             {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
               <>
                 <GridAnswerItem className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`} content={<img src={guess.image.selected} />} isVisible={isVisible} />
-                <GridAnswerItem className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></GridAnswerItem>
+                <GridAnswerItem className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`} content={<img className="flag-image" src={guess.flag_img.selected} />} isVisible={isVisible} />
                 <GridAnswerItem className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></GridAnswerItem>
                 <GridAnswerItem className={`grid-item arrow-head ${guess.position.boolean ? 'true' : 'false'}`}>
                   {guess.position.selected === 'Midfielder' ? 'MID' :
@@ -249,14 +249,15 @@ function Play() {
             )}
           </div>
         ))}
-      </div>
+      </div >
 
       {isWinLossModalOpen && (
         <>
           <WinLossBackdrop onClick={closeWinLossModal} />
           <WinLossModal closeModal={closeWinLossModal} win={win} randomFootballer={randomFootballer} />
         </>
-      )}
+      )
+      }
 
     </>
 
