@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import {useAuth} from "../providers/AuthProvider";
-
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
 import WinLossModal from "../components/WinLossModal";
 import WinLossBackdrop from "../components/WinLossBackdrop";
@@ -192,6 +192,20 @@ function Play() {
     }
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, [goalGuess]);
+
+  const GridAnswerItem = ({className, content, isVisible}) => (
+    <CSSTransition classNames="grid-item" timeout={5000} in={isVisible} appear>
+      <div className={`grid-item ${className}`}>
+        {content}
+      </div>
+    </CSSTransition>
+  );
+
 
   return (
     <>
@@ -215,22 +229,22 @@ function Play() {
           <div className="grid-answers" key={rowIndex}>
             {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
               <>
-                <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
-                <div className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></div>
-                <div className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></div>
-                <div className={`grid-item arrow-head ${guess.position.boolean ? 'true' : 'false'}`}>
+                <GridAnswerItem className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`} content={<img src={guess.image.selected} />} isVisible={isVisible} />
+                <GridAnswerItem className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></GridAnswerItem>
+                <GridAnswerItem className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></GridAnswerItem>
+                <GridAnswerItem className={`grid-item arrow-head ${guess.position.boolean ? 'true' : 'false'}`}>
                   {guess.position.selected === 'Midfielder' ? 'MID' :
                     guess.position.selected === 'Forward' ? 'FWD' :
                       guess.position.selected === 'Defender' ? 'DEF' :
                         guess.position.selected === 'Goalkeeper' ? 'GK' :
                           guess.position.selected}
-                </div>
-                <div className={`grid-item age ${guess.age.boolean ? 'true' : 'false'}`}>
+                </GridAnswerItem>
+                <GridAnswerItem className={`grid-item age ${guess.age.boolean ? 'true' : 'false'}`}>
                   <div>Age:</div> <div className="arrow-head">{guess.age.selected} {renderArrow('age', guess)}</div>
-                </div>
-                <div className={`grid-item age ${guess.number.boolean ? 'true' : 'false'}`}>
+                </GridAnswerItem>
+                <GridAnswerItem className={`grid-item age ${guess.number.boolean ? 'true' : 'false'}`}>
                   <div>Number:</div> <div className="arrow-head">{guess.number.selected} {renderArrow('number', guess)}</div>
-                </div>
+                </GridAnswerItem>
               </>
             )}
           </div>

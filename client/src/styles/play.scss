@@ -24,7 +24,7 @@
   width: 90px;
   height: 95px;
   background-color: white;
-  border: 3px solid black; 
+  border: 3px solid black;
   box-sizing: border-box;
   margin-right: 10px;
 }
@@ -40,7 +40,7 @@
   flex-direction: column;
 }
 
-.grid-item img{
+.grid-item img {
   width: 4em;
   height: 4em;
 }
@@ -57,4 +57,22 @@
 .false {
   // background-color: grey;
   background-color: rgb(148, 163, 184);
+}
+
+.grid-item-enter {
+  opacity: 0;
+}
+
+.grid-item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out; /* Adjust the duration and easing function as needed */
+}
+
+.grid-item-exit {
+  opacity: 1;
+}
+
+.grid-item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out; /* Adjust the duration and easing function as needed */
 }
