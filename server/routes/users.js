@@ -103,7 +103,7 @@ router.post("/login", (req, res) => {
 // Log a user out
 router.post("/logout", (req, res) => {
   // console.log("before", req.session.userId);
-  req.session.userId = null;
+  req.session = null;
   // console.log(req.session.userId);
 
   res.status(200).json({ message: "Logout successful" });

@@ -34,6 +34,7 @@ const widgetApiRoutes = require("./routes/widgets-api");
 const usersRoutes = require("./routes/users");
 const statsRoutes = require("./routes/stats-api");
 const footballersRoutes = require("./routes/footballers-api");
+const homeRoutes = require("./routes/home");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -42,6 +43,7 @@ app.use("/api/widgets", widgetApiRoutes);
 // app.use("/api/users", usersRoutes);
 app.use("/users", usersRoutes);
 app.use("/api/stats", statsRoutes);
+app.use("/home", homeRoutes);
 // Note: mount other resources here, using the same pattern above
 app.use("/api/footballers", footballersRoutes);
 // Home page

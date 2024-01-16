@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
 export const authContext = createContext();
 
@@ -10,6 +10,19 @@ export const useAuth = function () {
 
 const AuthProvider = function (props) {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Fetch session data from the server
+    return axios
+      .get("/home")
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data.user);
+      })
+      .catch((error) => {
+        console.error("Error fetching session data:", error);
+      });
+  }, []);
 
   const login = function (email, password) {
     return axios.post("/users/login", { email, password }).then((res) => {
