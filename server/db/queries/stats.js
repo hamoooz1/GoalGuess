@@ -29,7 +29,7 @@ const sumGamesByUser = (user_id) => {
 const getStatsByAllUsers = () => {
   return db
     .query(
-      `SELECT users.full_name as name, SUM(stats.win_count) as win_count, SUM(stats.lose_count) as lose_count, SUM(stats.total_games) as total_games FROM stats INNER JOIN users ON users.id = stats.user_id GROUP BY stats.user_id, users.full_name ORDER BY total_games DESC;`
+      `SELECT users.full_name as name, SUM(stats.win_count) as win_count, SUM(stats.lose_count) as lose_count, SUM(stats.total_games) as total_games FROM stats INNER JOIN users ON users.id = stats.user_id GROUP BY stats.user_id, users.full_name ORDER BY win_count DESC;`
     )
     .then((data) => {
       return data.rows;
