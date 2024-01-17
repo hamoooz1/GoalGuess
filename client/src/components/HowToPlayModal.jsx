@@ -6,6 +6,7 @@ import howToPlayBlank from "../howToPlayBlank.svg";
 import howToPlayCircleGreen from "../howToPlayCircleGreen.svg";
 import howToPlayCircleUp from "../howToPlayCircleUp.svg";
 import howToPlayCircleDown from "../howToPlayCircleDown.svg";
+import silhouette from "../silhouetteSimple.png";
 import '../styles/howToPlay.scss';
 import '../styles/modals.scss';
 import closeSymbol from "../closeSymbol.svg";
@@ -31,14 +32,16 @@ const HowToPlayModal = ({closeHowToPlayModal}) => {
               <li>Use the search bar to make a guess</li>
               <li>After each guess, you'll get some feedback:</li>
               <div className="modal-circles">
+                <img className="circle one" src={silhouette} />
                 <img className="circle two" src={howToPlayCircleGreen} />
                 <img className="circle three" src={howToPlayCircle} />
                 <img className="circle four" src={howToPlayCircleGreen} />
                 <img className="circle five" src={howToPlayCircleUp} />
                 <img className="circle six" src={howToPlayCircleDown} />
               </div>
-              <li>The first three boxes turn green if you've guessed the player's Nationality, Team, or Position</li>
+              <li>The first three boxes after your guess's photo turn green if you've guessed the mystery player's Nationality, Team, or Position</li>
               <div className="modal-circles">
+                <img className="circle one" src={silhouette} />
                 <img className="circle two" src={howToPlayCircleGreen} />
                 <img className="circle three" src={howToPlayCircle} />
                 <img className="circle four" src={howToPlayCircleGreen} />
@@ -47,6 +50,7 @@ const HowToPlayModal = ({closeHowToPlayModal}) => {
               </div>
               <li>The last two boxes will tell you if the player's age and number are higher or lower than your guess</li>
               <div className="modal-circles">
+                <img className="circle one" src={silhouette} />
                 <img className="circle two" src={howToPlayBlank} />
                 <img className="circle three" src={howToPlayBlank} />
                 <img className="circle four" src={howToPlayBlank} />

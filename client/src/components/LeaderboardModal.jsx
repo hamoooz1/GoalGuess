@@ -40,7 +40,7 @@ const LeaderboardModal = (props) => {
             <thead className='table__head'>
               <tr>
                 <th className='head_name head'>User</th>
-                <th className='head_win head'>Winnings</th>
+                <th className='head_win head'>Wins</th>
                 <th className='head_lose head'>Losses</th>
                 <th className='head_total head'>Total games</th>
               </tr>
