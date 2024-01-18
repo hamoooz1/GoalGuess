@@ -11,7 +11,7 @@ export default function PlayerStats() {
         <div className="stats-section">
 
           <div className="goals-info">
-            <h2>Top Scorers</h2>
+            <h2>Goals</h2>
             <div className="goals-stats">
               <div className="player-box">
                 <h5>1</h5>
@@ -136,56 +136,56 @@ export default function PlayerStats() {
             <div className="goals-stats">
               <div className="player-box">
                 <h5>1</h5>
-                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t36.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t36@x2.png 2x" />
+                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t43.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t43@x2.png 2x" />
                 <div className="player-badge">
-                  <h4>Lewis Dunk</h4>
-                  <h5>Brighton</h5>
+                  <h4>Rodri</h4>
+                  <h5>Man City</h5>
                 </div>
-                <h3>1657</h3>
+                <h3>1,809</h3>
               </div>
             </div>
             <div className="goals-stats">
               <div className="player-box">
                 <h5>2</h5>
-                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t14.png" srcSet="https://resources.premierleague.com/premierleague/badges/25/t14@x2.png 2x" />
+                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t36.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t36@x2.png 2x" />
                 <div className="player-badge">
-                  <h4>Mohamed Salah</h4>
-                  <h5>Liverpool</h5>
+                  <h4>Lewis Dunk</h4>
+                  <h5>Brighton</h5>
                 </div>
-                <h3>14</h3>
+                <h3>1,657</h3>
               </div>
             </div>
             <div className="goals-stats">
               <div className="player-box">
                 <h5>3</h5>
-                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t91.png" srcSet="https://resources.premierleague.com/premierleague/badges/25/t91@x2.png 2x" />
+                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t3.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t3@x2.png 2x" />
                 <div className="player-badge">
-                  <h4>Dominic Solanke</h4>
-                  <h5>Bournemouth</h5>
+                  <h4>William Saliba</h4>
+                  <h5>Arsenal</h5>
                 </div>
-                <h3>12</h3>
+                <h3>1,584</h3>
               </div>
             </div>
             <div className="goals-stats">
               <div className="player-box">
                 <h5>4</h5>
-                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t6.png" srcSet="https://resources.premierleague.com/premierleague/badges/25/t6@x2.png 2x" />
+                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t8.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t8@x2.png 2x" />
                 <div className="player-badge">
-                  <h4>Son Heung-Min</h4>
-                  <h5>Tottenham</h5>
+                  <h4>Axel Disasi</h4>
+                  <h5>Chelsea</h5>
                 </div>
-                <h3>12</h3>
+                <h3>1,475</h3>
               </div>
             </div>
             <div className="goals-stats">
               <div className="player-box">
                 <h5>5</h5>
-                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t21.png" srcSet="https://resources.premierleague.com/premierleague/badges/25/t21@x2.png 2x" />
+                <img className="team-badge" src="https://resources.premierleague.com/premierleague/badges/25/t8.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t8@x2.png 2x" />
                 <div className="player-badge">
-                  <h4>Jarrod Bowen</h4>
-                  <h5>West Ham</h5>
+                  <h4>Thiago Silva</h4>
+                  <h5>Chelsea</h5>
                 </div>
-                <h3>11</h3>
+                <h3>1,469</h3>
               </div>
             </div>
           </div>
