@@ -1,14 +1,14 @@
+body {
+  background-color: #023047;
+}
+
 .login {
   display: flex;
   flex-direction: column;
-  // background-image: url("../field.png");
-  // background-size: cover;
   height: 70%;
   background-color: rgba(2, 48, 71, 0.1);
-  // background-image: linear-gradient(
-  //   to top,
-  //   rgba(2, 48, 71, 0.8) 0%,
-  //   #219ebc 51%,
-  //   #fff 100%
-  // );
+}
+
+.form {
+  border: solid black 2px;
 }
