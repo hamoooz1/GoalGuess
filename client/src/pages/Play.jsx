@@ -199,6 +199,7 @@ function Play() {
         <h1>Goal Guess</h1>
         <h2>Premier Soccer Player Guessing Game</h2>
         <p>{guessCount} of 6 guesses</p>
+
         <SearchBar guessCount={guessCount}
           incrementCounter={incrementCounter}
           handleSearchInput={handleSearchInput}
@@ -236,6 +237,10 @@ function Play() {
           </div>
         ))}
       </div>
+      
+      <button className="restart" onClick={closeWinLossModal}>
+        RESTART
+      </button>
 
       {isWinLossModalOpen && (
         <>

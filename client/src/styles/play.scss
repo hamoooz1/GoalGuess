@@ -14,7 +14,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 7em;
+  margin-bottom: 3em;
 }
 
 .grid-item {
@@ -57,4 +57,20 @@
 .false {
   // background-color: grey;
   background-color: rgb(148, 163, 184);
+}
+
+.restart {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 2em;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.restart:hover {
+  background-color: #e60000;
 }
