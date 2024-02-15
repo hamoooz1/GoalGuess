@@ -17,8 +17,6 @@ const AuthProvider = function (props) {
     });
   };
   const logout = () => {
-    // setUser(null);
-    // return;
     return axios.post("/users/logout").then((res) => {
       setUser(null);
     });
@@ -30,9 +28,6 @@ const AuthProvider = function (props) {
       .then((res) => {
         setUser(res.data.user);
       });
-    // .catch((error) => {
-    //   setReqError(error.response.data.error);
-    // });
   };
   const value = {
     user,

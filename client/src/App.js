@@ -5,7 +5,6 @@ import AuthProvider from "./providers/AuthProvider";
 import { ModalProvider } from "./providers/ModalProvider";
 import ModalBackdrop from "./components/ModalBackdrop";
 import HowToPlayModal from "./components/HowToPlayModal";
-import LeaderboardModal from "./components/LeaderboardModal";
 
 function App() {
   const [isHowToPlayModalOpen, setIsHowToPlayModalOpen] = useState(false);

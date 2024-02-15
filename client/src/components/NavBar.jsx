@@ -7,10 +7,7 @@ import goalGuessLogo from "../football_b.svg";
 
 function NavBar(props) {
   const {user} = useAuth();
-  // function logout() {
-  //   props.logout();
-  //   props.done();
-  // }
+  
   return (
     <nav className="navBar">
 
