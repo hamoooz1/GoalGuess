@@ -41,7 +41,7 @@ function Login(props) {
   };
 
   return (
-    <div className="login">
+    <div className="login"  style={{ backgroundColor: '#023047' }}>
 
       <form className="form" onSubmit={handleSubmit}>
         <h3 className="form__title">Login</h3>
