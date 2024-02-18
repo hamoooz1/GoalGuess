@@ -14,13 +14,7 @@ import SearchBar
 function Play() {
 
   const [guessCount, setGuesserCounter] = useState(0);
-
-
-
-
   const [listOfGuesses, setListOfGuesses] = useState([]);
-
-
   const [footballers, setFootballers] = useState([]);
   const [allFootballers, setAllFootballers] = useState([]);
   const [selectedFootballer, setSelectedFootballer] = useState(null);
@@ -210,12 +204,18 @@ function Play() {
         />
       </div>
 
-      <div className="grid-container">
+      {listOfGuesses.length === 0 &&
+      <div className="starting-message">
+        SELECT<br></br>A FOOTBALLER<br></br>TO START!!!
+      </div>
+      }
 
+      <div className="grid-container">
+        
         {listOfGuesses?.map((guess, rowIndex) => (
           <div className="grid-answers" key={rowIndex}>
             {guess.name && guess.nationality && guess.flag_img && guess.team && guess.team_img && guess.position && guess.number && guess.age && (
-              <>
+              <> 
                 <div className={`grid-item ${guess.name.boolean ? 'true' : 'false'}`}><img src={guess.image.selected} /></div>
                 <div className={`grid-item ${guess.nationality.boolean ? 'true' : 'false'}`}><img className="flag-image" src={guess.flag_img.selected} /></div>
                 <div className={`grid-item ${guess.team.boolean ? 'true' : 'false'}`}><img src={guess.team_img.selected} /></div>
