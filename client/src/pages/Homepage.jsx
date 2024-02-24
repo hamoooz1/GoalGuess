@@ -12,6 +12,7 @@ import "../styles/homepage.scss";
 import Footer from "../components/Footer";
 import PlayerStats from "../components/PlayerStats";
 import StatsCentreNav from "../components/StatsCentreNav";
+import About from "../components/About";
 
 import {useAuth} from "../providers/AuthProvider";
 import {useModal} from "../providers/ModalProvider";
@@ -33,9 +34,6 @@ function Homepage() {
 
   const [page, setPage] = useState('home');
 
-  // const [page, setPage] = useState(user ? 'home' : 'login');
-  // const user = null;
-  // const logout = null;
   function handleLogout(e) {
     e.preventDefault();
     logout();
@@ -44,7 +42,6 @@ function Homepage() {
 
   function handleHome() {
     setPage('home');
-    // props.setIsHowToPlayModalOpen(false);
   }
 
   function handleLoginClick() {
@@ -58,13 +55,10 @@ function Homepage() {
   function handlePlay() {
     setPage('play');
   }
-  // const openHowToPlayModal = () => {
-  //   setIsHowToPlayModalOpen(true);
-  // };
 
-  // const closeHowToPlayModal = () => {
-  //   setIsHowToPlayModalOpen(false);
-  // };
+  function handlePage(page) {
+    setPage(`${page}`)
+  }
 
   return (
     <article className="homepage">
@@ -75,10 +69,6 @@ function Homepage() {
         handleLoginClick={handleLoginClick}
         handleSignupClick={handleSignupClick}
         handleHome={handleHome}
-
-        // openHowToPlayModal={props.openHowToPlayModal}
-        // isLeaderboardModalOpen={props.isLeaderboardModalOpen}
-        // openLeaderboardModal={props.openLeaderboardModal}
         isHowToPlayModal={isHowToPlayModalOpen}
         openHowToPlayModal={openHowToPlayModal}
         isLeaderboardModalOpen={isLeaderboardModalOpen}
@@ -89,7 +79,6 @@ function Homepage() {
       {page == "login" && <Login done={() => setPage('home')} handleSignupClick={handleSignupClick} />}
       {page == "signup" && <Signup done={() => setPage('home')} handleLoginClick={handleLoginClick} />}
       {page == "play" && <Play />}
-
       {page == 'home' &&
         <>
           <BackgroundVideo />
@@ -106,6 +95,7 @@ function Homepage() {
           <PlayerStats />
         </>
       }
+      {page == "about" && <About />}
       <Footer />
 
       {isHowToPlayModalOpen && (
