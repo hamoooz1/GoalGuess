@@ -8,7 +8,7 @@ import {FaInstagram} from "react-icons/fa";
 import "../styles/footer.scss";
 
 
-function Footer() {
+function Footer(props) {
   return (
     <div className="footer">
       <div className="inner-footer">
@@ -21,7 +21,7 @@ function Footer() {
           <div className="about-us">
             <h4>About Us</h4>
             <ul>
-              <li>Bio</li>
+              <li onClick={props.handleBio}>Bio</li>
               <li>Our Progress</li>
               <li>Our Work</li>
             </ul>

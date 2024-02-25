@@ -60,6 +60,14 @@ function Homepage() {
     setPage(`${page}`)
   }
 
+  function handleBio() {
+    setPage('about')
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
   return (
     <article className="homepage">
       <NavBar
@@ -96,7 +104,7 @@ function Homepage() {
         </>
       }
       {page == "about" && <About />}
-      <Footer />
+      <Footer handleBio={handleBio}/>
 
       {isHowToPlayModalOpen && (
         <>
